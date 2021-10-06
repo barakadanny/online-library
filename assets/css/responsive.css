@@ -1,0 +1,63 @@
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: #f2ebe3;
+    /* background-color: red; */
+    padding-left: 1rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero section */
+  .image-box {
+    display: none;
+  }
+
+  /* Features section */
+  #features .device img {
+    margin-bottom: 2rem;
+  }
+
+  /* Contact section */
+  #contact .address {
+    margin-top: 2rem;
+  }
+
+  /* footer section */
+  .footer-logo {
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero section */
+  .main-hero-content h1 {
+    text-align: center;
+  }
+
+  .main-hero-content p {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  /* Features section */
+  #features {
+    margin-top: 0;
+  }
+
+  /* Pricing section */
+  #pricing .pricing-table {
+    width: calc(80% / 1);
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #pricing .pricing-table:nth-child(1) {
+    margin-top: -2rem;
+  }
+}

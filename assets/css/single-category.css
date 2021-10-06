@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* --main-accent-color: #03bad5;
+  --section-title-color-dark: #37474f;
+  --body-color: #495057; */
+
+  --primary-color: #f2ebe3;
+  --secondary-color: rgb(152, 108, 65, 0.6);
+  --first--text-color: rgb(152, 108, 65);
+  --btn-color: rgb(152, 108, 65, 0.5);
+  --dark-color: #0d1713;
+  --rgb-dark-color: rgb(13, 23, 19, 0.7);
+  --white-color: #ffffff;
+  --over-color: #27778b;
+}
+#single-category {
+  background-color: var(--white-color);
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th,
+#myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header {
+  background-color: var(--secondary-color);
+}
+#single-category__table {
+  padding-bottom: 10rem;
+}
+.pagination-section {
+  display: flex;
+  justify-content: space-between;
+}
+.pagination-list {
+  height: 50px;
+  padding: 0 5px;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pagination-list li {
+  padding: 5px 10px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+select {
+  width: 126px;
+  padding: 6px;
+  margin: 1px 0px;
+  border: 1px solid var(--secondary-color);
+  cursor: pointer;
+  outline: none;
+}

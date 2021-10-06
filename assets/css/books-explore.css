@@ -1,0 +1,41 @@
+.best-books_links {
+  width: 90%;
+  max-height: 200px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.genre-link {
+  max-width: 90%;
+  max-height: 200px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  transition: all 0.2s ease-out;
+}
+/* .genre-link:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+} */
+.popular-link {
+  max-width: 100%;
+  max-height: 200px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  transition: all 0.2s ease-out;
+}
+
+.genre-link:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+.best-books_links:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+.popular-link:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
