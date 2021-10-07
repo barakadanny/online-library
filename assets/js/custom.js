@@ -61,6 +61,8 @@ for(let i=0; i<tr.length; i++){
 }
 select.onchange = rowCount;
 function rowCount(e){
+    let neil=ul.querySelectorAll('.list');
+    neil.forEach(n=>n.remove());
     let limit = parseInt(e.target.value);
     displayPage(limit)
 }
@@ -82,7 +84,7 @@ function buttonGenerator(limit){
     }else{
         ul.style.display = 'flex';
         const nofPage = Math.ceil(nofTr/limit);
-        for(let i=1; i<=nofPage; i++){
+        for( i=1; i<=nofPage; i++){
             let li = document.createElement('li')
             li.className = 'list';
             let a = document.createElement('a')
@@ -90,7 +92,7 @@ function buttonGenerator(limit){
             a.setAttribute('data-page', i);
             li.appendChild(a);
             a.innerText = i;
-            ul.insertBefore(li, divparent.next)
+            ul.insertBefore(li, ul.next)
         }
     }
 }
