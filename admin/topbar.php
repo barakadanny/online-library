@@ -1,6 +1,10 @@
- 
- 
- 
+<?php 
+                        session_start();
+                        // $_SESSION['login_user'];
+                        if(!$_SESSION['login_user'])  {  
+header("Location: login.php");//redirect to the login page to secure the welcome page without login access.  
+}
+                    ?>
  <header class="topbar">
 	 	<div class="top-navbar">
        <nav class="navbar navbar-expand-md navbar-light h-100 w-100 p-0">
@@ -63,7 +67,14 @@
 				dropdown-toggle profile-pic" href="#" id="navbarDropdown" 
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<img src="img/user.jpg" alt="user" class="">
-                  <span class="hidden-md-down d-none">Mark Sanders &nbsp;</span>
+                  <span class="hidden-md-down d-none">
+                     
+                    <?php 
+                        echo($_SESSION['login_user'])
+                        // $_SESSION['login_user'];
+                    ?> &nbsp;
+                  </span>
+                  
                 </a>
                  <ul class="dropdown-menu small-menu">
 								     <li><a href="#">
@@ -74,8 +85,8 @@
 									 <span class="material-icons">settings</span>
 									 Settings
 									 </a></li>
-									 <li><a href="#">
-									 <span class="material-icons">logout</span>
+									 <li><a href="logout.php">
+									 <span class="material-icons"></span>
 									 Logout
 									 </a></li>
 									 
@@ -90,3 +101,7 @@
    <!--==============================================
      top-header end
 	 ======================================-->
+
+
+
+  
