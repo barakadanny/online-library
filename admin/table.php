@@ -6,6 +6,7 @@
   
 
 	   <?php include("topbar.php");?>
+     
 
 	 
 	 <!--==============================================
@@ -27,7 +28,7 @@
                 
 			   <li class="active">
                     <a href="table.php">
-					<i class="fas fa-table"></i><span>tables</span></a>
+					<i class="fas fa-table"></i><span>Librarians</span></a>
                     
                 </li>
                
@@ -87,13 +88,13 @@
                 <li class="breadcrumb-item">
                   <a href="">Home</a>
                 </li>
-                <li class="breadcrumb-item active">Table Basic</li>
+                <li class="breadcrumb-item active">Manage Librarians</li>
               </ol>
             </div>
             <div class="col-md-7 ">
-              <a href="" class="btn waves-effect waves-light btn btn-info
+              <!-- <a href="" class="btn waves-effect waves-light btn btn-info
 			  float-right  d-none d-lg-block d-md-block                 hidden-sm-down                   text-white">
-                Upgrade to Pro</a>
+                Upgrade to Pro</a> -->
             </div>
           </div>
           <!-- ============================================================== -->
@@ -105,58 +106,83 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Basic Table</h4>
-                  <h6 class="card-subtitle">Add class <code>.table</code></h6>
+                  <h4 class="card-title">Manage Librarians</h4>
+                  <h6 class="card-subtitle">Add class <code>.Librarians</code></h6>
+                  <!-- input librarians field -->
+                  <form action="function.php" method="POST">
+                    <div class="form-group row col-md-8 d-flex justify-content-between">
+                      <div class="col-xs-4">
+                        <label for="ex1">Librarian Name</label>
+                        <input class="form-control" name="lib_name" id="ex1" type="text">
+                      </div>
+                      <div class="col-xs-4">
+                        <label for="ex2">Email</label>
+                        <input class="form-control" name="lib_email" id="ex2" type="text">
+                      </div>
+                      <div class="col-xs-4">
+                        <label for="ex3">Password</label>
+                        <input class="form-control" name="lib_password" id="ex3" type="text">
+                      </div>
+                      
+                    </div>
+                    <button type="submit" name="lib_add" class="btn btn-primary">submit</button>
+                  </form>
+
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Password</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                                            <?php
+                            require_once "config.php";
+                            $selectquery="SELECT * FROM librarian";
+                            $query = mysqli_query($con, $selectquery);
+                            $nums = mysqli_num_rows($query);
+                            
+                            //  echo $res[0];
+                            while($res = mysqli_fetch_array($query) ){
+                              // echo $res['librarian_name']."</br>";
+                            
+                            ?>
+
+                            <tr>
+                          <td><?php echo $res['librarian_ID']; ?></td>
+                          <td><?php echo $res['librarian_name']; ?></td>
+                          <td><?php echo $res['librarian_email']; ?></td>
+                          <td><?php echo $res['librarian_password']; ?></td>
+                          <td>
+                            <button type="button" name="lib_update" class="btn btn-success">Update</button>
+                            <button type="button" name="lib_delete" class="btn btn-danger">Delete</button>
+                          </td>
+                        </tr>
+                              <?php
+                              }                  
+                        ?>
+                        
+                        
+
+                        <!-- <tr>
                           <td>1</td>
                           <td>Deshmukh</td>
                           <td>Prohaska</td>
                           <td>@Genelia</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Deshmukh</td>
-                          <td>Gaylord</td>
-                          <td>@Ritesh</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Sanghani</td>
-                          <td>Gusikowski</td>
-                          <td>@Govinda</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Roshan</td>
-                          <td>Rogahn</td>
-                          <td>@Hritik</td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>Joshi</td>
-                          <td>Hickle</td>
-                          <td>@Maruti</td>
-                        </tr>
-                        <tr>
-                          <td>6</td>
-                          <td>Nigam</td>
-                          <td>Eichmann</td>
-                          <td>@Sonu</td>
-                        </tr>
+                          <td>
+                            <button type="button" class="btn btn-success">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                          </td>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
+                  
+
                 </div>
               </div>
             </div>
@@ -181,8 +207,8 @@
         <!-- footer -->
         <!-- ============================================================== -->
          <footer class="footer">
-          © 2021 Admin Dashboard by
-          <a href="https://www.youtube.com/c/VishwebDesign">Vishweb Design</a>
+          © 2021 
+          <a href="#">digibook</a>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

@@ -6,10 +6,11 @@ require_once "config.php";
 
 //  Login section
     // define variable 
-    $admin_user = $_POST['username'];
-    $admin_pass = $_POST['password'];
+    
   
 if(isset($_POST['login'])){
+    $admin_user = $_POST['username'];
+    $admin_pass = $_POST['password'];
     if($admin_pass == "" || $admin_pass == "")	{
         $err="fill your username and password first";
     }
@@ -29,4 +30,20 @@ if(isset($_POST['login'])){
     // mysqli_close();
 }
 
-?>
+//add librarians
+    // check if the user clicked the add button
+ if(isset($_POST['lib_add'])){
+    //  retrieve all the input fields
+     $libname = $_POST['lib_name'];
+     $libemail = $_POST['lib_email'];
+     $libpassword = $_POST['lib_password'];
+
+     $sql = "INSERT INTO librarian values('','$libname','$libemail',sha1('$libpassword'))";
+     $query = mysqli_query($con, $sql);
+     if($query==1){
+         header("location: table.php");
+     }else{
+         echo "Failed to insert Data";
+     }
+ }
+ ?>

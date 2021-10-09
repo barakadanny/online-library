@@ -32,17 +32,17 @@
 			   
 			          <li class="dropdown">
                     <a href="table.php">
-					        <i class="fas fa-table"></i><span>tables</span></a>
+					        <i class="fas fa-table"></i><span>Librarians</span></a>
                     
                 </li>
                
 			   
 			          <li class="dropdown">
                     <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					          <i class="far fa-smile"></i><span>Librarians</span></a>
+					          <i class="far fa-smile"></i><span>Emoji</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                         <li>
-                            <a href="#">Manage Librarians</a>
+                            <a href="#">Page 1</a>
                         </li>
                         <li>
                             <a href="#">Page 2</a>
