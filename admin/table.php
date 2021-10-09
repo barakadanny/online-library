@@ -108,20 +108,33 @@
                 <div class="card-body">
                   <h4 class="card-title">Manage Librarians</h4>
                   <h6 class="card-subtitle">Add class <code>.Librarians</code></h6>
+                  <?php 
+                    if(isset($_SESSION['message'])):
+                  ?>
+                  <div class="alert alert-<?=$_SESSION['msg_type'] ?>">
+                      <?php 
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                      ?>
+                  </div>
+                  <?php endif ?>
+                  <!-- <h6 class="card-subtitle">Add class <code>.Librarians</code></h6> -->
                   <!-- input librarians field -->
                   <form action="function.php" method="POST">
                     <div class="form-group row col-md-8 d-flex justify-content-between">
                       <div class="col-xs-4">
                         <label for="ex1">Librarian Name</label>
-                        <input class="form-control" name="lib_name" id="ex1" type="text">
+                        <!-- value="<?php echo $name; ?>" -->
+                        <input class="form-control" name="lib_name" id="ex1" type="text"  placeholder="Enter name...">
                       </div>
                       <div class="col-xs-4">
                         <label for="ex2">Email</label>
-                        <input class="form-control" name="lib_email" id="ex2" type="text">
+                        <!-- value="<?php echo $email; ?>" -->
+                        <input class="form-control" name="lib_email" id="ex2" type="text"  placeholder="Enter email...">
                       </div>
                       <div class="col-xs-4">
                         <label for="ex3">Password</label>
-                        <input class="form-control" name="lib_password" id="ex3" type="text">
+                        <input class="form-control" name="lib_password" id="ex3" type="text" placeholder="Enter password...">
                       </div>
                       
                     </div>
@@ -158,12 +171,12 @@
                           <td><?php echo $res['librarian_email']; ?></td>
                           <td><?php echo $res['librarian_password']; ?></td>
                           <td>
-                            <button type="button" name="lib_update" class="btn btn-success">Update</button>
-                            <button type="button" name="lib_delete" class="btn btn-danger">Delete</button>
+                            <a href="function.php?edit=<?php echo $res['librarian_ID'];?>" type="button"  class="btn btn-success">Update</a>
+                            <a href="function.php?delete=<?php echo $res['librarian_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
                           </td>
                         </tr>
                               <?php
-                              }                  
+                              }             
                         ?>
                         
                         

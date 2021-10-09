@@ -38,12 +38,43 @@ if(isset($_POST['login'])){
      $libemail = $_POST['lib_email'];
      $libpassword = $_POST['lib_password'];
 
+     
      $sql = "INSERT INTO librarian values('','$libname','$libemail',sha1('$libpassword'))";
      $query = mysqli_query($con, $sql);
      if($query==1){
+         $_SESSION['message']="Record has been saved Successfully!";
+         $_SESSION['msg_type']="success";
          header("location: table.php");
      }else{
          echo "Failed to insert Data";
      }
  }
+
+//   <!-- delete a librarian -->
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM librarian WHERE librarian_ID=$id";
+    $query= mysqli_query($con, $sql);
+
+    $_SESSION['message']="Record has been deleted Successfully!";
+     $_SESSION['msg_type']="danger";
+     header("location: table.php");
+}
+// update a librarian
+// if(isset($_GET['edit'])){
+//     $id = $_GET['edit'];
+
+//      $sql = "SELECT * FROM librarian WHERE librarian_ID=$id";
+//     $query= mysqli_query($con, $sql);
+//     if($query==1){
+//         $row = mysqli_fetch_array($query);
+
+//         $name = $row['librarian_name'];
+//         $email = $row['librarian_email'];
+//     }
+// }
+
+
  ?>
+
+ 
