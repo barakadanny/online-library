@@ -17,7 +17,7 @@ header("Location: login.php");//redirect to the login page to secure the welcome
 
 			  <span class="">
               <!--End Logo icon -->
-                  <h4 class="mb-0"><b>vishweb</b> design</h4>
+                  <h4 class="mb-0"><b>DigiBook</b> design</h4>
 				</span>
             </a>
           </div>

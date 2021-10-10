@@ -18,7 +18,7 @@
         <nav id="sidebar">
             <ul class="list-unstyled components">
 			<li  class="active">
-                    <a href="index.php" class="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                    <a href="index.php" class="dashboard"><i class="fas fa-tachometer-alt"></i><span>Manage Users</span></a>
                 </li>
 		
                 <li class="dropdown">
@@ -32,14 +32,14 @@
 			   
 			          <li class="dropdown">
                     <a href="table.php">
-					        <i class="fas fa-table"></i><span>Librarians</span></a>
+					        <i class="fas fa-table"></i><span>Manage Librarians</span></a>
                     
                 </li>
                
 			   
 			          <li class="dropdown">
                     <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					          <i class="far fa-smile"></i><span>Emoji</span></a>
+					          <i class="fas fa-table"></i><span>Manage Books</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                         <li>
                             <a href="#">Page 1</a>
@@ -54,14 +54,14 @@
                 </li>
                
                <li class="">
-                    <a href="#"><i class="fas fa-globe-asia"></i><span>Map</span></a>
+                    <a href="#"><i class="fas fa-globe-asia"></i><span>Manage genre</span></a>
                 </li>
 				
 				        <li  class="">
-                    <a href="#"><i class="far fa-bookmark"></i><span>Blank</span></a>
+                    <a href="#"><i class="far fa-bookmark"></i><span>Profile</span></a>
                 </li>
                 <li  class="">
-                    <a href="#"><i class="fas fa-question-circle"></i><span>404</span></a>
+                    <a href="#"><i class="fas fa-question-circle"></i><span>Full report</span></a>
                 </li>
                
                
@@ -96,9 +96,6 @@
               </ol>
             </div>
             <div class="col-md-7 ">
-              <a href="" class="btn btn btn-info
-			  float-right  d-none d-lg-block d-md-block hidden-sm-down  text-white">
-                Upgrade to Pro</a>
             </div>
           </div>
           <!-- ============================================================== -->
@@ -131,9 +128,9 @@
                     <table class="table vm no-th-brd pro-of-month">
                       <thead>
                         <tr>
-                          <th colspan="2">Assigned</th>
-                          <th>Name</th>
-                          <th>Budget</th>
+                          <th colspan="2">Profile name</th>
+                          <th>Email</th>
+                          <th>News Subscription Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -143,50 +140,19 @@
                           </td>
                           <td>
                             <h6>Sunil Joshi</h6>
-                            <small class="text-muted">Web Designer</small>
                           </td>
-                          <td>Elite Admin</td>
-                          <td>$3.9K</td>
-                        </tr>
-                        <tr class="active">
-                          <td>
-                            <span class="round"><img src="./img/user2.jpg" alt="user" 
-							width="50"></span>
-                          </td>
-                          <td>
-                            <h6>Andrew</h6>
-                            <small class="text-muted">Project Manager</small>
-                          </td>
-                          <td>Real Homes</td>
-                          <td>$23.9K</td>
+                          <td>barakadan421@gmail.com</td>
+                          <td>true</td>
                         </tr>
                         <tr>
                           <td><span class="round round-success">B</span></td>
                           <td>
                             <h6>Bhavesh patel</h6>
-                            <small class="text-muted">Developer</small>
                           </td>
-                          <td>MedicalPro Theme</td>
-                          <td>$12.9K</td>
+                          <td>test@gmail.com</td>
+                          <td>False</td>
                         </tr>
-                        <tr>
-                          <td><span class="round round-primary">N</span></td>
-                          <td>
-                            <h6>Nirav Joshi</h6>
-                            <small class="text-muted">Frontend Eng</small>
-                          </td>
-                          <td>Elite Admin</td>
-                          <td>$10.9K</td>
-                        </tr>
-                        <tr>
-                          <td><span class="round round-warning">M</span></td>
-                          <td>
-                            <h6>Micheal Doe</h6>
-                            <small class="text-muted">Content Writer</small>
-                          </td>
-                          <td>Helping Hands</td>
-                          <td>$12.9K</td>
-                        </tr>
+                        
                       </tbody>
                     </table>
                   </div>
@@ -197,13 +163,13 @@
             <!-- Column -->
             <div class="col-lg-4 d-flex align-items-stretch">
               <div class="card w-100">
-                <div class="up-img" style="background-image: url(./img/card2.jpg)"></div>
+                <div class="up-img" style="background-image: url(./img/users.png)"></div>
                 <div class="card-body">
-                  <h5 class="card-title">Business development of rules</h5>
+                  <h5 class="card-title">Manage users from this page</h5>
                   <span class="label label-info label-rounded">Technology</span>
                   <p class="mb-0 mt-3">
-                    Titudin venenatis ipsum aciat. Vestibu ullamer quam. nenatis
-                    ipsum ac feugiat. Ibulum ullamcorper.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Mollitia dolores quia perspiciatis eveniet a ipsa sapiente.
                   </p>
                   <div class="d-flex mt-3">
                     <a class="link" href="">Read more</a>
@@ -229,8 +195,8 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-          © 2021 Admin Dashboard by
-          <a href="https://www.youtube.com/c/VishwebDesign">Vishweb Design</a>
+          © 2021
+          <a href="#">digibook</a>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

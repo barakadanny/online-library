@@ -7,7 +7,7 @@
         <nav id="sidebar">
             <ul class="list-unstyled components">
 			<li  class="active">
-                    <a href="index.php" class="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                    <a href="index.php" class="dashboard"><i class="fas fa-tachometer-alt"></i><span>Manage Users</span></a>
                 </li>
 		
                 <li class="dropdown">
@@ -21,14 +21,14 @@
 			   
 			   <li class="dropdown">
                     <a href="table.php">
-					<i class="fas fa-table"></i><span>tables</span></a>
+					<i class="fas fa-table"></i><span>Manage Librarians</span></a>
                     
                 </li>
                
 			   
 			     <li class="dropdown">
                     <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					<i class="far fa-smile"></i><span>icons</span></a>
+					<i class="far fa-table"></i><span>Manage Books</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                         <li>
                             <a href="#">Page 1</a>
@@ -43,14 +43,14 @@
                 </li>
                
                <li class="">
-                    <a href="#"><i class="fas fa-globe-asia"></i><span>Map</span></a>
+                    <a href="#"><i class="fas fa-globe-asia"></i><span>Manage range</span></a>
                 </li>
 				
 				 <li  class="">
-                    <a href="#"><i class="far fa-bookmark"></i><span>Blank</span></a>
+                    <a href="#"><i class="far fa-bookmark"></i><span>Profile</span></a>
                 </li>
                 <li  class="">
-                    <a href="#"><i class="fas fa-question-circle"></i><span>404</span></a>
+                    <a href="#"><i class="fas fa-question-circle"></i><span>Full report</span></a>
                 </li>
                
                
