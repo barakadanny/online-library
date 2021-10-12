@@ -31,7 +31,7 @@
 					<i class="far fa-table"></i><span>Manage Books</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="genre.php">Genre</a>
                         </li>
                         <li>
                             <a href="#">Page 2</a>

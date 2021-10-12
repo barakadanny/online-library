@@ -1,8 +1,5 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 
 // Include the configuration file
@@ -16,7 +13,7 @@ if(isset($_POST['login'])){
     $admin_user = $_POST['username'];
     $admin_pass = $_POST['password'];
     if($admin_pass == "" || $admin_pass == "")	{
-        $err="fill your username and password first";
+        echo "fill your username and password first";
     }
     else{
         $sql = "SELECT * FROM admins WHERE admin_email='$admin_user' AND admin_password =sha1('$admin_pass')";
@@ -25,7 +22,6 @@ if(isset($_POST['login'])){
         if($count == 1) {
             $_SESSION['login_user'] = $admin_user;
             header("location: index.php");
-            echo "Your Login correct";
       }else {
         //  $error = "Your Login Name or Password is invalid";
          echo "Your Login Name or Password is invalid";
@@ -90,6 +86,26 @@ if(isset($_GET['edit'])){
     }
 }
 
+// add genre of books
+if(isset($_POST['genre_add'])){
+    if(empty($_POST['genre_name'])){
+        header("location: genre.php");
+        $_SESSION['message']="⚠ All field are required!";
+        $_SESSION['msg_type']="danger";
+    }else{
+        $genrename = $_POST['genre_name'];
+
+        $sql = "INSERT INTO genre values ('', '$genrename')";
+        $query = mysqli_query($con, $sql);
+        if($query==1){
+            $_SESSION['message']="Record has been saved successfully !";
+            $_SESSION['msg_type']="success";
+            header("location: genre.php");
+        }else{
+            echo "Failed to insert Data";
+        }
+    }
+}
 
  ?>
 

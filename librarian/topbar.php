@@ -1,6 +1,4 @@
- 
- 
- 
+
  <header class="topbar">
 	 	<div class="top-navbar">
        <nav class="navbar navbar-expand-md navbar-light h-100 w-100 p-0">
@@ -13,7 +11,7 @@
 
 			  <span class="">
               <!--End Logo icon -->
-                  <h4 class="mb-0"><b>vishweb</b> design</h4>
+                  <h4 class="mb-0"><b>DigiBook</b></h4>
 				</span>
             </a>
           </div>

@@ -59,8 +59,8 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Manage Librarians</h4>
-                  <h6 class="card-subtitle">Add class <code>.Librarians</code></h6>
+                  <h4 class="card-title">Manage Books Genre</h4>
+                  <h6 class="card-subtitle">Add class <code>.genre</code></h6>
                   <?php 
                     if(isset($_SESSION['message'])):
                   ?>
@@ -75,23 +75,14 @@
                   <!-- input librarians field -->
                   <form action="function.php" method="POST">
                     <div class="form-group row col-md-8 d-flex justify-content-between">
-                      <div class="col-xs-4">
-                        <label for="ex1">Librarian Name</label>
+                      <div >
+                        <label for="ex1">Genre Title</label>
                         <!-- value="<?php echo $name; ?>" -->
-                        <input class="form-control" name="lib_name" id="ex1" type="text" value="<?php echo $name; ?>"  placeholder="Enter name...">
-                      </div>
-                      <div class="col-xs-4">
-                        <label for="ex2">Email</label>
-                        <!-- value="<?php echo $email; ?>" -->
-                        <input class="form-control" name="lib_email" id="ex2" type="text" value="<?php echo $email; ?>"  placeholder="Enter email...">
-                      </div>
-                      <div class="col-xs-4">
-                        <label for="ex3">Password</label>
-                        <input class="form-control" name="lib_password" id="ex3" type="text" placeholder="Enter password...">
+                        <input class="form-control" name="genre_name" id="ex1" type="text" placeholder="Enter book genre...">
                       </div>
                       
                     </div>
-                    <button type="submit" name="lib_add" class="btn btn-primary">submit</button>
+                    <button type="submit" name="genre_add" class="btn btn-primary">Add Genre</button>
                   </form>
 
                   <div class="table-responsive">
@@ -99,16 +90,14 @@
                       <thead>
                         <tr>
                           <!-- <th>#</th> -->
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>Password</th>
+                          <th>Genre Title</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                                             <?php
                             require_once "config.php";
-                            $selectquery="SELECT * FROM librarian";
+                            $selectquery="SELECT * FROM genre";
                             $query = mysqli_query($con, $selectquery);
                             $nums = mysqli_num_rows($query);
                             
@@ -119,13 +108,11 @@
                             ?>
 
                             <tr>
-                          <!-- <td><?php echo $res['librarian_ID']; ?></td> -->
-                          <td><?php echo $res['librarian_name']; ?></td>
-                          <td><?php echo $res['librarian_email']; ?></td>
-                          <td><?php echo $res['librarian_password']; ?></td>
+                          <!-- <td><?php echo $res['genre_ID']; ?></td> -->
+                          <td><?php echo $res['genre_name']; ?></td>
                           <td>
-                            <a href="function.php?edit=<?php echo $res['librarian_ID'];?>" type="button"  class="btn btn-success">Update</a>
-                            <a href="function.php?delete=<?php echo $res['librarian_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
+                            <a href="function.php?edit=<?php echo $res['genre_ID'];?>" type="button"  class="btn btn-success">Update</a>
+                            <a href="function.php?delete=<?php echo $res['genre_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
                           </td>
                         </tr>
                               <?php

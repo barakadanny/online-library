@@ -13,60 +13,7 @@
 	 ======================================-->
 	 
 	  <!-- Sidebar  -->
-        <nav id="sidebar">
-            <ul class="list-unstyled components">
-			<li  class="active">
-                    <a href="index.php" class="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-                </li>
-		
-                <li class="dropdown">
-                    <a href="profile.php">
-					<i class="far fa-user-circle"></i><span>Profile</span></a>
-                   
-                </li>
-                
-                
-				
-			   
-			   <li class="dropdown">
-                    <a href="table.php">
-					<i class="fas fa-table"></i><span>tables</span></a>
-                    
-                </li>
-               
-			   
-			     <li class="dropdown">
-                    <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					<i class="far fa-smile"></i><span>icons</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu7">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-               
-               <li class="">
-                    <a href="#"><i class="fas fa-globe-asia"></i><span>Map</span></a>
-                </li>
-				
-				 <li  class="">
-                    <a href="#"><i class="far fa-bookmark"></i><span>Blank</span></a>
-                </li>
-                <li  class="">
-                    <a href="#"><i class="fas fa-question-circle"></i><span>404</span></a>
-                </li>
-               
-               
-            </ul>
-
-           
-        </nav>
+        <?php include("sidebar.php");?>
 	 
 	 <!---==============================================
        sidebar end
@@ -94,9 +41,6 @@
               </ol>
             </div>
             <div class="col-md-7 ">
-              <a href="" class="btn btn btn-info
-			  float-right  d-none d-lg-block d-md-block hidden-sm-down  text-white">
-                Upgrade to Pro</a>
             </div>
           </div>
           <!-- ============================================================== -->
@@ -114,76 +58,63 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <div>
-                      <h5 class="card-title">Projects of the Month</h5>
-                    </div>
-                    <div class="ml-auto">
-                      <select class="form-select border-0 form-control b-0">
-                        <option selected="">January</option>
-                        <option value="1">February</option>
-                        <option value="2">March</option>
-                        <option value="3">April</option>
-                      </select>
+                      <h5 class="card-title">Add a book from here.</h5>
                     </div>
                   </div>
                   <div class="table-responsive mt-3 no-wrap">
+                    <form>
+                      <div class="form-group">
+                        <input type="text" autocomplete="false" class="form-control"  placeholder="Book name...">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Book image</label>
+                        <input type="file" class="form-control-file" >
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Book year...">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Author here...">
+                      </div>
+                      <div class="col-auto my-1">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>Choose...</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Book Summary</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Add book</button>
+                    </form>
                     <table class="table vm no-th-brd pro-of-month">
                       <thead>
                         <tr>
-                          <th colspan="2">Assigned</th>
-                          <th>Name</th>
-                          <th>Budget</th>
+                          <th colspan="2">Book title</th>
+                          <th>image</th>
+                          <th>Book year</th>
+                          <th>Book Author</th>
+                          <th>Book genre</th>
+                          <th>Book Summary</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td style="width: 50px">
-                            <span class="round">S</span>
+                            book
                           </td>
                           <td>
                             <h6>Sunil Joshi</h6>
-                            <small class="text-muted">Web Designer</small>
                           </td>
                           <td>Elite Admin</td>
-                          <td>$3.9K</td>
-                        </tr>
-                        <tr class="active">
-                          <td>
-                            <span class="round"><img src="./img/user2.jpg" alt="user" 
-							width="50"></span>
-                          </td>
-                          <td>
-                            <h6>Andrew</h6>
-                            <small class="text-muted">Project Manager</small>
-                          </td>
-                          <td>Real Homes</td>
-                          <td>$23.9K</td>
-                        </tr>
-                        <tr>
-                          <td><span class="round round-success">B</span></td>
-                          <td>
-                            <h6>Bhavesh patel</h6>
-                            <small class="text-muted">Developer</small>
-                          </td>
-                          <td>MedicalPro Theme</td>
-                          <td>$12.9K</td>
-                        </tr>
-                        <tr>
-                          <td><span class="round round-primary">N</span></td>
-                          <td>
-                            <h6>Nirav Joshi</h6>
-                            <small class="text-muted">Frontend Eng</small>
-                          </td>
                           <td>Elite Admin</td>
-                          <td>$10.9K</td>
-                        </tr>
-                        <tr>
-                          <td><span class="round round-warning">M</span></td>
-                          <td>
-                            <h6>Micheal Doe</h6>
-                            <small class="text-muted">Content Writer</small>
-                          </td>
-                          <td>Helping Hands</td>
-                          <td>$12.9K</td>
+                          <td>Elite Admin</td>
+                          <td>Elite Admin</td>
+                          <td>Elite Admin</td>
                         </tr>
                       </tbody>
                     </table>
@@ -195,7 +126,7 @@
             <!-- Column -->
             <div class="col-lg-4 d-flex align-items-stretch">
               <div class="card w-100">
-                <div class="up-img" style="background-image: url(./img/card2.jpg)"></div>
+                <div class="up-img"></div>
                 <div class="card-body">
                   <h5 class="card-title">Business development of rules</h5>
                   <span class="label label-info label-rounded">Technology</span>
@@ -227,8 +158,8 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-          © 2021 Admin Dashboard by
-          <a href="https://www.youtube.com/c/VishwebDesign">Vishweb Design</a>
+          © 2021 
+          <a href="">DigiBook</a>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
