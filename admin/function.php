@@ -1,5 +1,9 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Include the configuration file
 require_once "config.php";
@@ -34,20 +38,27 @@ if(isset($_POST['login'])){
     // check if the user clicked the add button
  if(isset($_POST['lib_add'])){
     //  retrieve all the input fields
-     $libname = $_POST['lib_name'];
-     $libemail = $_POST['lib_email'];
-     $libpassword = $_POST['lib_password'];
+    if(empty($_POST['lib_name']) or empty($_POST['lib_email']) or empty($_POST['lib_password'])){
+        header("location: table.php");
+        $_SESSION['message']="⚠ All field are required!";
+         $_SESSION['msg_type']="danger";
+    }else{
 
-     
-     $sql = "INSERT INTO librarian values('','$libname','$libemail',sha1('$libpassword'))";
-     $query = mysqli_query($con, $sql);
-     if($query==1){
-         $_SESSION['message']="Record has been saved Successfully!";
-         $_SESSION['msg_type']="success";
-         header("location: table.php");
-     }else{
-         echo "Failed to insert Data";
-     }
+        $libname = $_POST['lib_name'];
+        $libemail = $_POST['lib_email'];
+        $libpassword = $_POST['lib_password'];
+   
+        
+        $sql = "INSERT INTO librarian values('','$libname','$libemail',sha1('$libpassword'))";
+        $query = mysqli_query($con, $sql);
+        if($query==1){
+            $_SESSION['message']="Record has been saved Successfully!";
+            $_SESSION['msg_type']="success";
+            header("location: table.php");
+        }else{
+            echo "Failed to insert Data";
+        }
+    }
  }
 
 //   <!-- delete a librarian -->
@@ -61,18 +72,23 @@ if(isset($_GET['delete'])){
      header("location: table.php");
 }
 // update a librarian
-// if(isset($_GET['edit'])){
-//     $id = $_GET['edit'];
+if(isset($_GET['edit'])){
+    $id = $_GET['edit'];
 
-//      $sql = "SELECT * FROM librarian WHERE librarian_ID=$id";
-//     $query= mysqli_query($con, $sql);
-//     if($query==1){
-//         $row = mysqli_fetch_array($query);
+     $sql = "SELECT * FROM librarian WHERE librarian_ID=$id";
+    $query= mysqli_query($con, $sql);
+    $record = mysqli_num_rows($query);
+    if($record==1){
+        $row = mysqli_fetch_array($query);
 
-//         $name = $row['librarian_name'];
-//         $email = $row['librarian_email'];
-//     }
-// }
+        $name = $row['librarian_name'];
+        $email = $row['librarian_email'];
+    }else{
+        $_SESSION['message']="An error Occurred please try again or contact the admin!";
+         $_SESSION['msg_type']="danger";
+         exit();
+    }
+}
 
 
  ?>

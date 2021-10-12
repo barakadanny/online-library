@@ -1,0 +1,28 @@
+:root {
+  /* --main-accent-color: #03bad5;
+  --section-title-color-dark: #37474f;
+  --body-color: #495057; */
+
+  --primary-color: #f2ebe3;
+  --secondary-color: rgb(152, 108, 65, 0.6);
+  --first--text-color: rgb(152, 108, 65);
+  --btn-color: rgb(152, 108, 65, 0.5);
+  --dark-color: #0d1713;
+  --rgb-dark-color: rgb(13, 23, 19, 0.7);
+  --white-color: #ffffff;
+  --over-color: #27778b;
+}
+#single-book {
+  /* background-color: red; */
+  padding: 4rem 0;
+}
+.book-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.book-action {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  align-items: center;
+}
