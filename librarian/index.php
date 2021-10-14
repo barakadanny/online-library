@@ -62,34 +62,47 @@
                     </div>
                   </div>
                   <div class="table-responsive mt-3 no-wrap">
-                    <form>
+                    <form action="function.php" method="POST">
                       <div class="form-group">
-                        <input type="text" autocomplete="false" class="form-control"  placeholder="Book name...">
+                        <input type="text" name="book_title" class="form-control"  placeholder="Book name...">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Book image</label>
-                        <input type="file" class="form-control-file" >
+                        <input type="file" name="book_image" class="form-control-file" >
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Book year...">
+                        <input type="text" name="book_year" class="form-control" placeholder="Book year...">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Author here...">
+                        <input type="text" name="book_author" class="form-control" placeholder="Author here...">
                       </div>
                       <div class="col-auto my-1">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                          <option selected>Choose...</option>
-                          <option value="1">One</option>
+                        <select class="custom-select mr-sm-2" name="book_gender" id="inlineFormCustomSelect">
+                          <option selected>Please select genre...</option>
+                          <?php
+                            require_once "config.php";
+                            $selectquery="SELECT * FROM genre";
+                            $query = mysqli_query($con, $selectquery);
+                            $nums = mysqli_num_rows($query);
+                            
+                            while($res = mysqli_fetch_array($query) ){
+                              
+                            ?>
+                            <option value="<?php echo $res['genre_ID'] ?>"><?php echo $res['genre_name']; ?></option>
+                              <?php
+                                }             
+                          ?>
+                          <!-- <option value="1">One</option>
                           <option value="2">Two</option>
-                          <option value="3">Three</option>
+                          <option value="3">Three</option> -->
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Book Summary</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" name="book_summary" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary">Add book</button>
+                      <button type="submit" name="add_book" class="btn btn-primary">Add book</button>
                     </form>
                     <table class="table vm no-th-brd pro-of-month">
                       <thead>

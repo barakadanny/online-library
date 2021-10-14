@@ -25,4 +25,25 @@ if(isset($_POST['login'])){
     
 }
 
+// aad book function
+if(isset($_POST['add_book'])){
+    $booktitle = $_POST['book_title'];
+    $bookimage = $_POST['book_image'];
+    $bookyear = $_POST['book_year'];
+    $bookauthor = $_POST['book_author'];
+    $booksummary = $_POST['book_summary'];
+    $bookgender = $_POST['book_gender'];
+
+    // insertion to the data baseKk
+    $sql = "INSERT INTO book (`book_title`,`book_author`,`book_year`,`book_summary`,`genre_ID`,`librarian_ID`,`book_added`) 
+                                VALUES ('{$booktitle}','{$bookauthor}','{$bookyear}','{$booksummary}','','','')";
+    $query= mysqli_query($con, $sql);
+    if($query==1){
+        header("location: index.php");
+    }else{
+        echo "error";
+    }
+
+}
+
 ?>
