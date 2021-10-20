@@ -33,19 +33,23 @@ require('functions.php');
                 }
             }
 
-            $check_email= "SELECT * FROM user WHERE user_name='$user_name'";
-            if($check_email){
+            $check_name= "SELECT * FROM user WHERE user_name='$user_name'";
+            $result_name = mysqli_query($con, $check_name);
+            if(mysqli_num_rows($result_name) > 0){
                 $errors[] = "User name already used";
             }
 
             $check_email= "SELECT * FROM user WHERE user_email='$user_email'";
-            if($check_email){
+            $result_email = mysqli_query($con, $check_email);
+            if(mysqli_num_rows($result_email) > 0){
                 $errors[] = "Email Address already used";
             }
-            // if($errors == 0){
+             if(count($errors) == 0){
             // activation email
+            require('constants.php');
                 $to = $user_email;
-                $subject = WEBSITE_NAME."- ACCOUNT ACTIVATION";
+               // $subject = WEBSITE_NAME."- ACCOUNT ACTIVATION";
+               $subject ="DigiBook - ACCOUNT ACTIVATION";
                 $token= sha1($user_name.$user_email.$user_password);
 
                 // ob_start is like a virtual memory
@@ -60,28 +64,8 @@ require('functions.php');
 
                 mail($to, $subject, $content, $headers);
                 // Inform to verify his/her email inbox
-                echo "mail sent";
-            
-
-            // if(count($errors) == 0){
-            //     // activation email
-            //     $to = $user_email;
-            //     $subject = WEBSITE_NAME."- ACCOUNT ACTIVATION";
-            //     $token= sha1($user_name.$user_email.$user_password);
-
-            //     // ob_start is like a virtual memory
-            //     ob_start(); 
-            //     require('../templates/emails/activation.tmpl.php');
-            //     $content = ob_get_clean();
-
-            //     $headers = 'MIME-Version: 1.0'."\r\n";
-            //     $headers .='Content-type: text/html; charset=iso-8859-1'."\r\n";
-
-            //     mail($to, $subject, $content, $headers);
-            //     // Inform to verify his/her email inbox
-            //     echo "mail sent";
-            // }
-            // }
+            }
+            //echo count($errors);
             
         }else{
             $errors[]= "Please fil all the data ⚠";

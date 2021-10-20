@@ -1,4 +1,5 @@
 <?php $title="Home"; ?>
+<?php session_start(); ?>
 <?php 
     include("includes/constants.php");
 ?>
@@ -15,7 +16,7 @@
     <section id="hero">
 
         <div class="container">
-
+                <?php include('partials/_flash.php'); ?>
             <div class="row main-hero-content">
 
                     <div class="col-md-6">
@@ -140,9 +141,6 @@
             </div>
         </div>
     </section>
-    <?php
-    include("includes/register.php");
-?>
 
  <?php
     include("includes/footer.php");

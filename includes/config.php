@@ -1,6 +1,9 @@
 <?php
 // Create connection
- $con = mysqli_connect("localhost","root","","digibook") or die("ERROR:could not connect to the database!!!!");	
+ $con = mysqli_connect("localhost","root","","digibook");
+ if ($con->connect_error) {
+  die("Connection failed: " . $con->connect_error);
+}
 //code to be executed...
 
 // Close connection	
