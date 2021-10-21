@@ -18,7 +18,7 @@ require('includes/functions.php');
         if(!empty($user_name) && !empty($user_email) && !empty($user_password) && !empty($user_confirmPass)){
             $errors = [];
 
-            extract($_POST);
+            //extract($_POST);
             if(mb_strlen($user_name)<3){
                 $errors[] ="User name too short! (minimum 3 characters)";
             }
