@@ -21,7 +21,7 @@ if(isset($_POST['login'])){
         $count = mysqli_num_rows($result);
         if($count == 1) {
             $_SESSION['login_user'] = $admin_user;
-            header("location: index.php");
+            header("location: profile.php");
       }else {
         //  $error = "Your Login Name or Password is invalid";
          echo "Your Login Name or Password is invalid";

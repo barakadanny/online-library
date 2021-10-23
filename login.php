@@ -9,22 +9,28 @@ require('includes/functions.php');
 
     if(isset($_POST['user_login'])){
         
-        // check empty fild
-        // ['user_name', 'user_email', 'user_password', 'user_confirmPass']
-        $user_name = $_POST['user_login_password'];
-        $user_password = sha1($_POST['user_login_password']);
-        if(!empty($user_name) && !empty($user_password)){
-            $q= "SELECT user_ID FROM user WHERE (user_name='$user_name' OR user_email='$user_name') AND user_password='$user_password' AND active='1' ";
+        $user_name = $_POST['user_login_name'];
+        $user_password = $_POST['user_login_password'];
+         if(!empty($user_name) && !empty($user_password)){
+        //if(!empty($user_name)){
+            $q= "SELECT user_ID FROM user WHERE (user_name='$user_name' OR user_email='$user_name') AND user_password=sha1('$user_password') AND active='1' ";
             $result = mysqli_query($con, $q);
-
-                var_dump($result);
-            //$userHasBeenFound = $q->rowCount();
-            // if($result){
-            //     header('Location: profile.php');
-            // }else{
-            //     set_flash("Wrong credentials ", 'danger');
-            // }
-
+            $count = mysqli_num_rows($result);
+                if($count == 1) {
+                    // $_SESSION['user_ID']= 
+                    $rows=$q->fetch_all(MYSQLI_ASSOC);
+                    die($rows->user_ID);
+                    header("location: profile.php");
+                }else {
+                    $_SESSION['message']="Error connecting to the server";
+                    $_SESSION['msg_type']="danger";
+            }
+             //echo "No empty field";
+            $_SESSION['message']="⚠ Your Login Name or Password is invalid!";
+            $_SESSION['msg_type']="danger";
+        }else{
+            $_SESSION['message']="⚠ All field are required!";
+            $_SESSION['msg_type']="danger";
         }
  
     }else{
@@ -56,19 +62,16 @@ require('includes/functions.php');
 <body>
     <?php include('partials/_flash.php'); ?>
                 <div class="container pt-2">
-                    <?php
-                                if(isset($errors) !=0){
-                                  echo '<div class="alert alert-danger">
-                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true" aria-label="Close">
-                                        &times;
-                                    </button>';
-                                    foreach($errors as $error){
-                                      echo $error.'<br/>';
-                                    }
-                                    echo '</div>';
-                                }
-
+                    <?php 
+                    if(isset($_SESSION['message'])):
+                  ?>
+                  <div class="alert alert-<?=$_SESSION['msg_type'] ?>">
+                      <?php 
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
                       ?>
+                  </div>
+                  <?php endif ?>
                     <div class="d-flex justify-content-center col-md-10 mt-5">
                             
                                         <!-- includes/register.code.php -->
@@ -76,7 +79,7 @@ require('includes/functions.php');
                           <!-- user name here -->
                             <div class="form-group">
                               <label for="exampleInputEmail1">User name or mail <address></address></label>
-                              <input autocomplete="false"  type="text" name="user_login_n" class="form-control" id="" placeholder="Enter your name or your address mail" required>
+                              <input autocomplete="off"  type="text" name="user_login_name" class="form-control" id="" placeholder="Enter your name or your address mail" required>
                             </div>
                             <!-- password here -->
                             <div class="form-group">
