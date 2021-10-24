@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("filters/guest_filter.php");
 require('includes/config.php');
 require('includes/functions.php');
 
@@ -13,14 +14,16 @@ require('includes/functions.php');
         $user_password = $_POST['user_login_password'];
          if(!empty($user_name) && !empty($user_password)){
         //if(!empty($user_name)){
-            $q= "SELECT user_ID FROM user WHERE (user_name='$user_name' OR user_email='$user_name') AND user_password=sha1('$user_password') AND active='1' ";
-            $result = mysqli_query($con, $q);
+            $q= "SELECT * FROM user WHERE (user_name='$user_name' OR user_email='$user_name') AND user_password=sha1('$user_password') AND active='1' ";
+            //$result = mysqli_query($con, $q);
+            $result = $con->query($q);
             $count = mysqli_num_rows($result);
                 if($count == 1) {
-                    // $_SESSION['user_ID']= 
-                    $rows=$q->fetch_all(MYSQLI_ASSOC);
-                    die($rows->user_ID);
-                    header("location: profile.php");
+                    $rows=$result->fetch_object();
+                    $_SESSION['user_ID']= $rows->user_ID;
+                    $_SESSION['user_name']= $rows->user_name;
+
+                    header("location: profile.php?id=".$rows->user_ID);
                 }else {
                     $_SESSION['message']="Error connecting to the server";
                     $_SESSION['msg_type']="danger";

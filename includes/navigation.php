@@ -21,7 +21,7 @@
                             <a class="nav-link" href="#download">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-target="#login" data-toggle="modal">Sign In</a>
+                            <a class="nav-link" href="login.php" >Sign In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-btn" href="register.php" >Create an Account</a>

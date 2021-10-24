@@ -14,23 +14,30 @@
         }
     }
 
-    if(!function_exists('is_already_in_use')){
-        function is_already_in_use($field, $value, $table){
+    // function to find an user by his/ her id
+    if(!function_exists('find_user_by_id')){
+        function find_user_by_id($id){
             global $con;
-
-            $sql = "SELECT user_ID from $table WHERE $field = ?";
-            $stmt = $con->prepare($sql);
-            $stmt->execute([$value]);
-            // $result=$stmt->get_result();  //get the mysqli result
-            // $user =$result->fetch_assoc();   // fetch data
-            $count = $stmt->rowCount();
-
-            $stmt->closeCursor();
-
-            return $count;
-
         }
     }
+
+    // if(!function_exists('is_already_in_use')){
+    //     function is_already_in_use($field, $value, $table){
+    //         global $con;
+
+    //         $sql = "SELECT user_ID from $table WHERE $field = ?";
+    //         $stmt = $con->prepare($sql);
+    //         $stmt->execute([$value]);
+    //         // $result=$stmt->get_result();  //get the mysqli result
+    //         // $user =$result->fetch_assoc();   // fetch data
+    //         $count = $stmt->rowCount();
+
+    //         $stmt->closeCursor();
+
+    //         return $count;
+
+    //     }
+    // }
 // function to display errors
 if(!function_exists('set_flash')){
     function set_flash($message, $type= 'info'){
