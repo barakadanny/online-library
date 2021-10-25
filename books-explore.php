@@ -1,6 +1,8 @@
 <?php $title="Explore Books"; ?>
+<?php session_start(); ?>
 <?php 
     include("includes/constants.php");
+    include("includes/functions.php");
 ?>
 <?php 
     include("includes/header.php");
@@ -102,13 +104,6 @@
 
     </section>
 
-
-    <?php
-    include("includes/login.php");
-?>
-<?php
-    include("includes/register.php");
-?>
 
  <?php
     include("includes/footer.php");

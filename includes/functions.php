@@ -1,6 +1,7 @@
 <?php require('config.php'); ?>
 <?php
 
+// this function isn't working yet
     if(!defined('not_empty')){
         function not_empty($fields = []){
             if(count($fields) !=0){
@@ -18,26 +19,24 @@
     if(!function_exists('find_user_by_id')){
         function find_user_by_id($id){
             global $con;
+
+            $q= "SELECT * FROM user WHERE user_ID='$id'";
+            //$result = mysqli_query($con, $q);
+            $result = $con->query($q);
+            //$count = mysqli_num_rows($result);
+            $data=$result->fetch_object();
+            return $data;
         }
     }
+// funtion to verify if the user is connected
+    if(!function_exists('is_logged_in')){
+    function is_logged_in(){
+        return isset($_SESSION['user_ID']) ||  isset($_SESSION['user_name']);
+    }
+}
 
-    // if(!function_exists('is_already_in_use')){
-    //     function is_already_in_use($field, $value, $table){
-    //         global $con;
-
-    //         $sql = "SELECT user_ID from $table WHERE $field = ?";
-    //         $stmt = $con->prepare($sql);
-    //         $stmt->execute([$value]);
-    //         // $result=$stmt->get_result();  //get the mysqli result
-    //         // $user =$result->fetch_assoc();   // fetch data
-    //         $count = $stmt->rowCount();
-
-    //         $stmt->closeCursor();
-
-    //         return $count;
-
-    //     }
-    // }
+ 
+    
 // function to display errors
 if(!function_exists('set_flash')){
     function set_flash($message, $type= 'info'){

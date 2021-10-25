@@ -1,4 +1,4 @@
-<?php $title="Books"; ?>
+<?php $title="Downloaded books"; ?>
 <?php session_start(); ?>
 <?php 
     include("includes/constants.php");
@@ -7,12 +7,13 @@
 <?php 
     include("includes/header.php");
 ?>
-    
+  
 <?php
     include("includes/navigation.php");
 ?>
 
-     <!-- Single category search section -->
+
+<!-- Single category search section -->
      <section id="single-category">
         <div class="container">
             <div class="row section-title justify-content-center">
@@ -87,14 +88,9 @@
             </div>
         </div>
      </section>
-<?php
-    include("includes/login.php");
-?>
-    
-<?php
-    include("includes/register.php");
-?>
 
- <?php
+
+
+<?php
     include("includes/footer.php");
-?>   
+?>

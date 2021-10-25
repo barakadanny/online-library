@@ -20,13 +20,21 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#download">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php" >Sign In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-btn" href="register.php" >Create an Account</a>
-                        </li>
-                        
+                        <?php if(is_logged_in() ): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.php?id=<?= $_SESSION['user_ID']?>" >Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout.php" >Logout</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php" >Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-btn" href="register.php" >Create an Account</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

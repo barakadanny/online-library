@@ -2,12 +2,12 @@
 <?php session_start(); ?>
 <?php 
     include("includes/constants.php");
+    include("includes/functions.php");
 ?>
 <?php 
     include("includes/header.php");
 ?>
-
-    
+  
 <?php
     include("includes/navigation.php");
 ?>

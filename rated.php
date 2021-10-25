@@ -1,4 +1,4 @@
-<?php $title="Books"; ?>
+<?php $title="Rated books"; ?>
 <?php session_start(); ?>
 <?php 
     include("includes/constants.php");
@@ -7,12 +7,13 @@
 <?php 
     include("includes/header.php");
 ?>
-    
+  
 <?php
     include("includes/navigation.php");
 ?>
 
-     <!-- Single category search section -->
+
+<!-- Single category search section -->
      <section id="single-category">
         <div class="container">
             <div class="row section-title justify-content-center">
@@ -36,8 +37,9 @@
                 <div class="col-md-12">
                     <table id="myTable" class="tbody">
                         <tr class="header">
-                          <th style="width:60%;">Name</th>
-                          <th style="width:40%;">Author</th>
+                          <th style="width:55%;">Name</th>
+                          <th style="width:30%;">Author</th>
+                          <th style="width:15%;">Rate</th>
                         </tr>
                         <tr>
                           <td><a href="#" class="view-book__link">A Commentary and Digest on The Air, Act 1981</a></td>
@@ -87,14 +89,9 @@
             </div>
         </div>
      </section>
-<?php
-    include("includes/login.php");
-?>
-    
-<?php
-    include("includes/register.php");
-?>
 
- <?php
+
+
+<?php
     include("includes/footer.php");
-?>   
+?>
