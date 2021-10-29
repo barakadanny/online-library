@@ -20,17 +20,22 @@
         header('Location:profile.php?id='.$_SESSION['user_ID']);
     }
 
-
-
-    //Update information
+    //Update information about the user on his profile page
     if(isset($_POST['update'])){
-        
+        global $con;
+        $id = $_SESSION['user_ID'];
         $user_name = $_POST['userName'];
         $user_password = $_POST['userPassword'];
-         if(!empty($user_name) && !empty($user_password)){
-        //if(!empty($user_name)){
-            $q= "UPDATE user SET user_name='$user_name' ";
-            //$result = mysqli_query($con, $q);
+        //$user = find_user_by_id($_GET['id']);
+        //echo "one";
+         if(!empty($user_name) || !empty($user_password)){
+            // echo "here";
+
+            $q= "UPDATE `user` SET user_name='$user_name' WHERE user_ID='$id' ";
+            $result = $con->query($q);
+            //var_dump($id);
+            $_SESSION['message']="Profile updated Successfully!";
+            $_SESSION['msg_type']="success";
            
         }else{
             $_SESSION['message']="⚠ All field are required!";
@@ -71,9 +76,19 @@
             </div>
             <div class="panel-body">
             <form action="" method="POST">
+                <?php 
+                    if(isset($_SESSION['message'])):
+                  ?>
+                  <div class="alert alert-<?=$_SESSION['msg_type'] ?>">
+                      <?php 
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                      ?>
+                  </div>
+                  <?php endif ?>
                 <div class="form-group">
                     <label >User Name</label>
-                    <input type="email" name="userName" value="<?= $user->user_name ?>" class="form-control">
+                    <input type="text" name="userName" value="" placeholder="<?= $user->user_name ?>" class="form-control">
                 </div>
                 <!-- <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>

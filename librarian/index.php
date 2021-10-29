@@ -1,73 +1,108 @@
 
+<?php
+require_once "includes/config.php";
+include('function.php'); ?>
+<?php
 
-<?php include("header.php");?>
+    if(!empty($_GET['id'])){
+        //fetch data about the user using his identification 
+        // by using a function (find_user_by_ID)
+        $user = find_librarian_by_id($_GET['id']);
+        if(!$user){
+            header('Location:login.php');
+        }
 
-  <div class="main-wrapper">
-  
+    }else{
+        header('Location:index.php?id='.$_SESSION['librarian_ID']);
+    }
 
-	   <?php include("topbar.php");?>
+	// add book function
+if(isset($_POST['add_book'])){
+    $booktitle = $_POST['book_title'];
+    $bookimage = $_POST['book_image'];
+    $bookyear = $_POST['book_year'];
+    $bookauthor = $_POST['book_author'];
+    $booksummary = $_POST['book_summary'];
+    $bookgenre = $_POST['book_genre'];
+	$id = (int)$_GET['id'];
 
-	 
-	  <!--==============================================
-     sidebar
-	 ======================================-->
-	 
-	  <!-- Sidebar  -->
-        <?php include("sidebar.php");?>
-	 
-	 <!---==============================================
-       sidebar end
-	 ======================================-->
-	 
-	 
-	 
-	 
-	 <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-          <!-- ============================================================== -->
-          <!-- Bread crumb and right sidebar toggle -->
-          <!-- ============================================================== -->
-          <div class="row page-titles d-flex align-items-center">
-            <div class="col-md-5 align-self-center">
-              <h3 class="text-themecolor m-0">Dashboard</h3>
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="">Home</a>
-                </li>
-                <li class="breadcrumb-item active">Dashboard</li>
-              </ol>
-            </div>
-            <div class="col-md-7 ">
-            </div>
-          </div>
-          <!-- ============================================================== -->
-          <!-- End Bread crumb and right sidebar toggle -->
-          <!-- ============================================================== -->
-  
+    // insertion to the data base
+    if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
+        
+		$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`, `genre_ID`, `librarian_ID`) 
+					VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$bookgenre','$id')";
+		$result = mysqli_query($con, $sql);
+		if($result==1){
+			$_SESSION['message']="Book inserted successfully";
+        	$_SESSION['msg_type']="success";
+		}else{
+			$_SESSION['message']="⚠ failed to insert book";
+        	$_SESSION['msg_type']="danger";
+		}
 
-          <!-- ============================================================== -->
-          <!-- Projects of the Month -->
-          <!-- ============================================================== -->
-          <div class="row">
-            <!-- Column -->
-            <div class="col-lg-8 d-flex align-items-stretch">
-              <div class="card w-100">
-                <div class="card-body">
-                  <div class="d-flex">
-                    <div>
-                      <h5 class="card-title">Add a book from here.</h5>
-                    </div>
-                  </div>
-                  <div class="table-responsive mt-3 no-wrap">
-                    <form action="function.php" method="POST">
+        // $id = (int)$_GET['id'];
+        // echo $id;
+    }else{
+        $_SESSION['message']="⚠ All field are required!";
+        $_SESSION['msg_type']="danger";
+    }
+
+}
+?>
+
+<?php include('header.php'); ?>
+
+
+	<!-- SIDEBAR -->
+	<?php include('side-bar.php'); ?>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<?php include('top-nav.php'); ?>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">WELCOME</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a href="#"><?= $user->librarian_name ?></a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+				<!-- form to add books -->
+				<form action="" method="POST">
+					<?php 
+                    if(isset($_SESSION['message'])):
+                  ?>
+                  <div class="alert alert-<?=$_SESSION['msg_type'] ?>">
+                      <?php 
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                      ?>
+                      </div>
+                  <?php endif ?>
                       <div class="form-group">
                         <input type="text" name="book_title" class="form-control"  placeholder="Book name...">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Book image</label>
+                        
                         <input type="file" name="book_image" class="form-control-file" >
                       </div>
                       <div class="form-group">
@@ -78,10 +113,10 @@
                       </div>
                       <div class="col-auto my-1">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
-                        <select class="custom-select mr-sm-2" name="book_gender" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2" name="book_genre" id="inlineFormCustomSelect">
                           <option selected>Please select genre...</option>
                           <?php
-                            require_once "config.php";
+                            
                             $selectquery="SELECT * FROM genre";
                             $query = mysqli_query($con, $selectquery);
                             $nums = mysqli_num_rows($query);
@@ -103,83 +138,119 @@
                         <textarea class="form-control" name="book_summary" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                       <button type="submit" name="add_book" class="btn btn-primary">Add book</button>
-                    </form>
-                    <table class="table vm no-th-brd pro-of-month">
-                      <thead>
-                        <tr>
-                          <th colspan="2">Book title</th>
-                          <th>image</th>
-                          <th>Book year</th>
-                          <th>Book Author</th>
-                          <th>Book genre</th>
-                          <th>Book Summary</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 50px">
-                            book
-                          </td>
-                          <td>
-                            <h6>Sunil Joshi</h6>
-                          </td>
-                          <td>Elite Admin</td>
-                          <td>Elite Admin</td>
-                          <td>Elite Admin</td>
-                          <td>Elite Admin</td>
-                          <td>Elite Admin</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-4 d-flex align-items-stretch">
-              <div class="card w-100">
-                <div class="up-img"></div>
-                <div class="card-body">
-                  <h5 class="card-title">Business development of rules</h5>
-                  <span class="label label-info label-rounded">Technology</span>
-                  <p class="mb-0 mt-3">
-                    Titudin venenatis ipsum aciat. Vestibu ullamer quam. nenatis
-                    ipsum ac feugiat. Ibulum ullamcorper.
-                  </p>
-                  <div class="d-flex mt-3">
-                    <a class="link" href="">Read more</a>
-                    <div class="ml-auto align-self-center">
-                      <a href="javascript:void(0)" class="link me-2">
-					  <i class="fa fa-heart-o"></i></a>
-                      <a href="javascript:void(0)" class="link me-2">
-					  <i class="fa fa-share-alt"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ============================================================== -->
-          <!-- End Projects of the Month -->
-          <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer">
-          © 2021 
-          <a href="">DigiBook</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-      </div>
+                </form>
+				 <!-- <form action="" method="POST">
+					<div class="form-group">
+						<label for="email">Book name</label>
+						<input type="text" class="form-control" name="book_title">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Book Author</label>
+						<input type="text" class="form-control" name="book_author">
+					</div>
+					<button name="add_book" type="submit" class="btn btn-primary">Add book</button>
+
+				</form>  -->
+				<!-- end of the form to add books -->
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>1020</h3>
+						<p>New Order</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>2834</h3>
+						<p>Visitors</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>$2543</h3>
+						<p>Total Sales</p>
+					</span>
+				</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Books Added By <?= $user->librarian_name ?></h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Book Title</th>
+								<th>Author</th>
+								<th>Year</th>
+								<th>Summary</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								$id = (int)$_GET['id'];
+								$q="SELECT * FROM book WHERE librarian_ID='$id' ";
+								$result = mysqli_query($con, $q);
+								while($res = mysqli_fetch_array($result) ){
+							?>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p><?php echo $res['book_title'];?></p>
+								</td>
+								<td><?php echo $res['book_author'];?></td>
+								<td><?php echo $res['book_year'];?></td>
+								<td><?php echo $res['book_summary'];?></td>
+								<td>01-10-2021</td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
+							</tr>
+								<?php
+								}
+								?>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Todos</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
 	
-  </div>
-  
-  <?php include("footer.php");?>
-  
+<?php include('footer.php'); ?>
