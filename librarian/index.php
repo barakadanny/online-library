@@ -19,33 +19,56 @@ include('function.php'); ?>
 	// add book function
 if(isset($_POST['add_book'])){
     $booktitle = $_POST['book_title'];
-    $bookimage = $_POST['book_image'];
+    //$bookimage = $_POST['book_image'];
     $bookyear = $_POST['book_year'];
     $bookauthor = $_POST['book_author'];
     $booksummary = $_POST['book_summary'];
     $bookgenre = $_POST['book_genre'];
+
+	// $bookimage = $_FILES["image"]["name"] ?? "";
+	// $tmp_name= $_FILES['image']['tmp_name'] ?? "";
+	// $folder="bookimages/".$bookimage;
+	// move_uploaded_file($tmp_name, $folder);
 	$id = (int)$_GET['id'];
 
-    // insertion to the data base
-    if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
-        
-		$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`, `genre_ID`, `librarian_ID`) 
-					VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$bookgenre','$id')";
-		$result = mysqli_query($con, $sql);
-		if($result==1){
-			$_SESSION['message']="Book inserted successfully";
-        	$_SESSION['msg_type']="success";
-		}else{
-			$_SESSION['message']="⚠ failed to insert book";
-        	$_SESSION['msg_type']="danger";
-		}
+	// $fileinfo=PATHINFO($_FILES["image"]["name"]);
+	// $newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
+	// move_uploaded_file($_FILES["image"]["tmp_name"],"bookimages/" . $newFilename);
+	// $location="bookimages/" . $newFilename;
 
-        // $id = (int)$_GET['id'];
-        // echo $id;
-    }else{
-        $_SESSION['message']="⚠ All field are required!";
-        $_SESSION['msg_type']="danger";
-    }
+	if(!empty($_FILES["image"]["tmp_name"])){
+		$fileinfo=PATHINFO($_FILES["image"]["name"]);
+		$newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
+		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
+		$location="upload/" . $newFilename;
+
+		// insertion to the data base
+		if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
+			
+			$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`,`book_image`, `genre_ID`, `librarian_ID`) 
+						VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$location','$bookgenre','$id')";
+			$result = mysqli_query($con, $sql);
+			if($result==1){
+				$_SESSION['message']="Book inserted successfully";
+				$_SESSION['msg_type']="success";
+			}else{
+				$_SESSION['message']="⚠ failed to insert book";
+				$_SESSION['msg_type']="danger";
+			}
+	
+			// $id = (int)$_GET['id'];
+			// echo $id;
+		}else{
+			$_SESSION['message']="⚠ All field are required!";
+			$_SESSION['msg_type']="danger";
+		}
+	}else{
+		$_SESSION['message']="No image has been selected";
+		$_SESSION['msg_type']="danger";
+	}
+
+
+
 
 }
 ?>
@@ -86,7 +109,7 @@ if(isset($_POST['add_book'])){
 				</a>
 			</div>
 				<!-- form to add books -->
-				<form action="" method="POST">
+				<form action="" method="POST" enctype="multipart/form-data">
 					<?php 
                     if(isset($_SESSION['message'])):
                   ?>
@@ -103,7 +126,7 @@ if(isset($_POST['add_book'])){
                       <div class="form-group">
                         <label for="exampleInputPassword1">Book image</label>
                         
-                        <input type="file" name="book_image" class="form-control-file" >
+                        <input type="file" name="image">
                       </div>
                       <div class="form-group">
                         <input type="text" name="book_year" class="form-control" placeholder="Book year...">
@@ -113,7 +136,7 @@ if(isset($_POST['add_book'])){
                       </div>
                       <div class="col-auto my-1">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
-                        <select class="custom-select mr-sm-2" name="book_genre" id="inlineFormCustomSelect">
+                        <select class=" mr-sm-2" name="book_genre" id="inlineFormCustomSelect">
                           <option selected>Please select genre...</option>
                           <?php
                             
@@ -133,13 +156,25 @@ if(isset($_POST['add_book'])){
                           <option value="3">Three</option> -->
                         </select>
                       </div>
+                      <!-- <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Book Summary</label>
+                        <textarea class="form-control" name="book_summary" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div> -->
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Book Summary</label>
                         <textarea class="form-control" name="book_summary" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
-                      <button type="submit" name="add_book" class="btn btn-primary">Add book</button>
+					  <button type="submit" name="add_book" class="btn btn-primary">Add book</button>
+					  <!-- summary editor -->
+					  <!-- <div class="row mb-4 ml-4">
+						
+
                 </form>
-				 <!-- <form action="" method="POST">
+				 <form action="" method="POST">
+
+				 by using the bellow class I get the text editor like word.... -----
+					 txtEditor
+
 					<div class="form-group">
 						<label for="email">Book name</label>
 						<input type="text" class="form-control" name="book_title">
@@ -203,7 +238,7 @@ if(isset($_POST['add_book'])){
 							?>
 							<tr>
 								<td>
-									<img src="img/people.png">
+									<img src="<?php echo $res['book_image'];?>">
 									<p><?php echo $res['book_title'];?></p>
 								</td>
 								<td><?php echo $res['book_author'];?></td>
@@ -217,7 +252,7 @@ if(isset($_POST['add_book'])){
 								?>
 						</tbody>
 					</table>
-				</div>
+				<!-- </div>
 				<div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
@@ -246,7 +281,7 @@ if(isset($_POST['add_book'])){
 							<i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		</main>
 		<!-- MAIN -->
