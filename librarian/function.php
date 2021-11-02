@@ -50,22 +50,25 @@ if(isset($_POST['login'])){
         }
     }
 
-//     if(isset($_POST['add_book'])){
-//     $booktitle = $_POST['book_title'];
-//     // $bookimage = $_POST['book_image'];
-//     // $bookyear = $_POST['book_year'];
-//     $bookauthor = $_POST['book_author'];
-//     // $booksummary = $_POST['book_summary'];
-//     // $bookgender = $_POST['book_gender'];
+// function to delete a book 
+// function to delete a book 
+if(isset($_GET['delete_book'])){
 
-//     // insertion to the data base
-//     if(!empty($booktitle) && !empty($bookauthor) ){
-//         echo "right here"; 
-//         $id = (int)$_GET['id'];
-//         echo $id;
-//     }else{
-//         echo "all field are required";
-//     }
+    $id=$_GET['delete_book'];
+    $sql= "DELETE FROM book WHERE book_ID='$id' ";
+    $query= mysqli_query($con, $sql);
+    if($query==1){
+        $_SESSION['message']="Book has been deleted successfully !";
+        $_SESSION['msg_type']="success";
+        header("location: index.php");
+        }else{
+            $_SESSION['message']="Book Failed to delete !";
+            $_SESSION['msg_type']="danger";
+            header("location: index.php");
+        }
 
-// }
+    // header("Location: genre.php");
+
+}
+
 ?>

@@ -87,13 +87,6 @@
             </div>
         </div>
      </section>
-<?php
-    include("includes/login.php");
-?>
-    
-<?php
-    include("includes/register.php");
-?>
 
  <?php
     include("includes/footer.php");

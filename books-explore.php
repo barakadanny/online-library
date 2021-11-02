@@ -3,6 +3,7 @@
 <?php 
     include("includes/constants.php");
     include("includes/functions.php");
+    include("includes/config.php");
 ?>
 <?php 
     include("includes/header.php");
@@ -13,7 +14,8 @@
 ?>
     <!-- Single category search section -->
     <section id="single-category">
-        <div class="container">
+        <div class="container single-category-class">
+            <!-- <img src="assets/img/img8.png" class="single-category-search" style="width:300px;" alt=""> -->
             <div class="row justify-content-center text-center mt-3">
                 <div class="col-md-6 single-desc">
                     <div class="sub-field">
@@ -65,15 +67,25 @@
 
             <div class="row justify-content-center text-center mt-2 mb-5">
 
+            <?php
+                $q="SELECT * FROM genre";
+                $result = mysqli_query($con, $q);
+                while($res = mysqli_fetch_array($result)){
+            ?>
+
                 <div class="col-md-4 single-desc">
-                    <a href="single-category.php"><img class="genre-link" src="assets/img/love.png" alt=""></a>
+                    <h2 class="genre-title"><?php echo $res['genre_name'];?></h2>
+                    <a href="single-category.php?genre_ID=<?php echo $res['genre_ID']; ?>"><img class="genre-link" src="admin/<?php echo $res['genre_image'];?>" alt=""></a>
                 </div>
-                <div class="col-md-4 single-desc">
+            <?php
+                }
+                ?>
+                <!-- <div class="col-md-4 single-desc">
                     <a href="single-category.php"><img class="genre-link" src="assets/img/comic.jpg" alt=""></a>
                 </div>
                 <div class="col-md-4 single-desc">
                     <a href="single-category.php"><img class="genre-link" src="assets/img/science.png" alt=""></a>
-                </div>
+                </div> -->
 
             </div>
 

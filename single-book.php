@@ -1,11 +1,15 @@
-
-<?php 
-    include("includes/header.php");
-?>
 <?php $title="Download book"; ?>
 <?php 
     include("includes/constants.php");
+    include("includes/functions.php");
 ?>
+
+<?php session_start(); ?>
+<?php 
+    include("includes/header.php");
+?>
+
+
     
 <?php
     include("includes/navigation.php");
@@ -49,13 +53,6 @@
         </div>
 
     </section>
-<?php
-    include("includes/login.php");
-?>
-
-<?php
-    include("includes/register.php");
-?>
 
  <?php
     include("includes/footer.php");

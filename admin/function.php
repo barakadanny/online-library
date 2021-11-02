@@ -69,6 +69,7 @@ if(isset($_GET['delete'])){
 }
 // update a librarian
 if(isset($_GET['edit'])){
+    header("location: table.php");
     $id = $_GET['edit'];
 
      $sql = "SELECT * FROM librarian WHERE librarian_ID=$id";
@@ -88,6 +89,51 @@ if(isset($_GET['edit'])){
 
 // add genre of books
 if(isset($_POST['genre_add'])){
+    $genre = $_POST['genre_name'];
+        // $img =$_FILES["image"]["tmp_name"]
+    	// $fileinfo=PATHINFO($_FILES["image"]["name"]);
+		// $newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
+		// move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
+		// $location="upload/" . $newFilename;
+
+   	if(!empty($_FILES["image"]["tmp_name"])){
+		$fileinfo=PATHINFO($_FILES["image"]["name"]);
+		$newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
+		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
+		$location="upload/" . $newFilename;
+
+		// insertion to the data base
+		if(!empty($genre)){
+			
+			$sql = "INSERT INTO `genre`(`genre_name`, `genre_image`) 
+						VALUES ('$genre','$location')";
+			$result = mysqli_query($con, $sql);
+			if($result==1){
+                header("Location:genre.php");
+				$_SESSION['message']="Genre Added successfully";
+				$_SESSION['msg_type']="success";
+			}else{
+                header("Location:genre.php");
+				$_SESSION['message']="⚠ failed to insert Genre";
+				$_SESSION['msg_type']="danger";
+			}
+	
+			// $id = (int)$_GET['id'];
+			// echo $id;
+		}else{
+            header("Location:genre.php");
+			$_SESSION['message']="⚠ All field are required!";
+			$_SESSION['msg_type']="danger";
+		}
+	}else{
+        header("Location:genre.php");
+		$_SESSION['message']="No image has been selected";
+		$_SESSION['msg_type']="danger";
+	} 
+
+
+    
+
     if(empty($_POST['genre_name'])){
         header("location: genre.php");
         $_SESSION['message']="⚠ All field are required!";
@@ -105,6 +151,31 @@ if(isset($_POST['genre_add'])){
             echo "Failed to insert Data";
         }
     }
+}
+
+// edit genre
+if(isset($_GET['edit_genre'])){
+
+}
+
+// delete genre
+if(isset($_GET['delete_genre'])){
+    $id=$_GET['delete_genre'];
+    echo $id;
+    $sql= "DELETE FROM genre WHERE genre_ID='$id' ";
+    $query= mysqli_query($con, $sql);
+    if($query==1){
+            $_SESSION['message']="Genre has been deleted successfully !";
+            $_SESSION['msg_type']="success";
+            header("location: genre.php");
+        }else{
+            $_SESSION['message']="Genre Failed to delete !";
+            $_SESSION['msg_type']="danger";
+            header("location: genre.php");
+        }
+
+    // header("Location: genre.php");
+
 }
 
  ?>

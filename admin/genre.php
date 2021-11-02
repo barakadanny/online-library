@@ -1,11 +1,11 @@
 
 
-<?php include("header.php");?>
+<?php include("includes/header.php");?>
 
   <div class="main-wrapper">
   
 
-	   <?php include("topbar.php");?>
+	   <?php include("includes/topbar.php");?>
      
     <?php
         $name='';
@@ -17,7 +17,7 @@
 	 ======================================-->
 	 
 	  <!-- Sidebar  -->
-        <?php include("sidebar.php");?>
+        <?php include("includes/sidebar.php");?>
 	 
 	 <!---==============================================
        sidebar end
@@ -73,12 +73,14 @@
                   <?php endif ?>
                   <!-- <h6 class="card-subtitle">Add class <code>.Librarians</code></h6> -->
                   <!-- input librarians field -->
-                  <form action="function.php" method="POST">
+                  <form action="function.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row col-md-8 d-flex justify-content-between">
                       <div >
                         <label for="ex1">Genre Title</label>
                         <!-- value="<?php echo $name; ?>" -->
-                        <input class="form-control" name="genre_name" id="ex1" type="text" placeholder="Enter book genre...">
+                        <input class="form-control" name="genre_name" id="ex1" type="text" placeholder="Enter book genre..."> <br>
+                        <label for="exampleInputPassword1">Genre image</label>
+                        <input type="file" name="image">
                       </div>
                       
                     </div>
@@ -111,8 +113,8 @@
                           <!-- <td><?php echo $res['genre_ID']; ?></td> -->
                           <td><?php echo $res['genre_name']; ?></td>
                           <td>
-                            <a href="function.php?edit=<?php echo $res['genre_ID'];?>" type="button"  class="btn btn-success">Update</a>
-                            <a href="function.php?delete=<?php echo $res['genre_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
+                            <a href="function.php?edit_genre=<?php echo $res['genre_ID'];?>" type="button"  class="btn btn-success">Update</a>
+                            <a href="function.php?delete_genre=<?php echo $res['genre_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
                           </td>
                         </tr>
                               <?php
@@ -170,5 +172,5 @@
 	
   </div>
   
-  <?php include("footer.php");?>
+  <?php include("includes/footer.php");?>
   

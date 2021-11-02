@@ -127,14 +127,15 @@ h2.section-title-heading {
   background-color: var(--primary-color);
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 15rem;
-  padding-bottom: 15rem;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
   position: relative;
 }
 
 .main-hero-content h1 {
   color: var(--first--text-color);
   letter-spacing: 0.11rem;
+  margin-top: 7rem;
 }
 .image-box {
   display: flex;
@@ -144,9 +145,9 @@ h2.section-title-heading {
 .image-box img {
   /* position: absolute; */
   z-index: 1;
-  box-shadow: 15px 8px 14px 0px rgba(0, 0, 0, 0.14);
+  /* box-shadow: 15px 8px 14px 0px rgba(0, 0, 0, 0.14);
   -webkit-box-shadow: 15px 8px 14px 0px rgba(0, 0, 0, 0.14);
-  -moz-box-shadow: 15px 8px 14px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 15px 8px 14px 0px rgba(0, 0, 0, 0.14); */
 }
 
 /* ============ ABOUT =============== */
@@ -169,7 +170,7 @@ h2.section-title-heading {
 
 #about {
   position: relative;
-  padding-bottom: 8rem;
+  padding: 3rem;
 }
 .single-desc {
   /* background-color: red; */
@@ -258,10 +259,14 @@ h2.section-title-heading {
   display: block;
   margin: 0 auto;
 }
+
 .feature-block {
   text-align: left;
   padding-top: 2rem;
 }
+/* .device {
+  display: none;
+} */
 
 #features-app .feature-block h3 {
   color: var(--section-title-color-dark);

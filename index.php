@@ -20,14 +20,15 @@
             <div class="row main-hero-content">
 
                     <div class="col-md-6">
-                        <h1>Explore and Get your next book from us</h1>
+                        <h1>Explore The best collection of Books with Us</h1>
                         <div class="hero-buttons">
                             <a href="books-explore.php" class="btn btn-outline-primary btn-white">Explore Books</a>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="image-box">
-                            <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+                            <!-- <img src="assets/img/hero-img.png" class="img-fluid" alt=""> -->
+                            <img src="assets/img/img10.png" class="img-fluid" alt="">
                         </div>
                     </div>
 
@@ -106,8 +107,7 @@
         <div class="container">
             <div class="row mt-5 pt-5 app-download">
                 <div class="col-md-6 device">
-                    <img src="assets/img/iphone.png" class="" alt="">
-                    
+                    <img src="assets/img/img11.png" class="device-feature" style="width:300px;" alt="">
                 </div>
                 <div class="col-md-6">
                     <div class="feature-block">

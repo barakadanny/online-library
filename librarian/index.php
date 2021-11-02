@@ -25,22 +25,20 @@ if(isset($_POST['add_book'])){
     $booksummary = $_POST['book_summary'];
     $bookgenre = $_POST['book_genre'];
 
-	// $bookimage = $_FILES["image"]["name"] ?? "";
-	// $tmp_name= $_FILES['image']['tmp_name'] ?? "";
-	// $folder="bookimages/".$bookimage;
-	// move_uploaded_file($tmp_name, $folder);
 	$id = (int)$_GET['id'];
 
-	// $fileinfo=PATHINFO($_FILES["image"]["name"]);
-	// $newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
-	// move_uploaded_file($_FILES["image"]["tmp_name"],"bookimages/" . $newFilename);
-	// $location="bookimages/" . $newFilename;
-
 	if(!empty($_FILES["image"]["tmp_name"])){
+		// action for the image file
 		$fileinfo=PATHINFO($_FILES["image"]["name"]);
 		$newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
-		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
-		$location="upload/" . $newFilename;
+		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newPdfname);
+		$location="upload/" . $newPdfname;
+
+		// action for the book pdf file pdf
+		// $pdfinfo=PATHINFO($_FILES["pdf"]["name"]);
+		// $newPdfname=$pdfinfo['filename'] ."_". time() . "." . $pdfinfo['extension'];
+		// move_uploaded_file($_FILES["image"]["tmp_name"],"book_pdf/" . $newFilename);
+		// $PdfLocation="book_pdf/" . $newFilename;
 
 		// insertion to the data base
 		if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
@@ -66,10 +64,6 @@ if(isset($_POST['add_book'])){
 		$_SESSION['message']="No image has been selected";
 		$_SESSION['msg_type']="danger";
 	}
-
-
-
-
 }
 ?>
 
@@ -125,8 +119,11 @@ if(isset($_POST['add_book'])){
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Book image</label>
-                        
                         <input type="file" name="image">
+                      </div>
+					  <div class="form-group">
+                        <label for="exampleInputPassword1">Book pdf</label>
+                        <input type="file" name="pdf">
                       </div>
                       <div class="form-group">
                         <input type="text" name="book_year" class="form-control" placeholder="Book year...">
@@ -168,24 +165,6 @@ if(isset($_POST['add_book'])){
 					  <!-- summary editor -->
 					  <!-- <div class="row mb-4 ml-4">
 						
-
-                </form>
-				 <form action="" method="POST">
-
-				 by using the bellow class I get the text editor like word.... -----
-					 txtEditor
-
-					<div class="form-group">
-						<label for="email">Book name</label>
-						<input type="text" class="form-control" name="book_title">
-					</div>
-					<div class="form-group">
-						<label for="pwd">Book Author</label>
-						<input type="text" class="form-control" name="book_author">
-					</div>
-					<button name="add_book" type="submit" class="btn btn-primary">Add book</button>
-
-				</form>  -->
 				<!-- end of the form to add books -->
 			<ul class="box-info">
 				<li>
@@ -245,6 +224,10 @@ if(isset($_POST['add_book'])){
 								<td><?php echo $res['book_year'];?></td>
 								<td><?php echo $res['book_summary'];?></td>
 								<td>01-10-2021</td>
+								<td>
+									<a href="function.php?edit_book=<?php echo $res['book_ID'];?>" type="button"  class="btn btn-success">Edit</a>
+									<a href="function.php?delete_book=<?php echo $res['book_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
+								</td>
 								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 								<?php
