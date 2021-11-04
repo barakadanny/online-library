@@ -26,3 +26,10 @@
   padding: 20px 10px;
   align-items: center;
 }
+/* .image-section {
+  background-color: red;
+} */
+.feature-img {
+  width: 250px;
+  height: auto;
+}

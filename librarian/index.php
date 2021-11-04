@@ -31,20 +31,20 @@ if(isset($_POST['add_book'])){
 		// action for the image file
 		$fileinfo=PATHINFO($_FILES["image"]["name"]);
 		$newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
-		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newPdfname);
-		$location="upload/" . $newPdfname;
+		move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
+		$location="upload/" . $newFilename;
 
 		// action for the book pdf file pdf
-		// $pdfinfo=PATHINFO($_FILES["pdf"]["name"]);
-		// $newPdfname=$pdfinfo['filename'] ."_". time() . "." . $pdfinfo['extension'];
-		// move_uploaded_file($_FILES["image"]["tmp_name"],"book_pdf/" . $newFilename);
-		// $PdfLocation="book_pdf/" . $newFilename;
+		$temp = explode(".", $_FILES["pdf_file"]["name"]);
+		$extension = end($temp);
+		$upload_pdf=$_FILES["pdf_file"]["name"];
+		move_uploaded_file($_FILES["pdf_file"]["tmp_name"],"book_pdf/" . $_FILES["pdf_file"]["name"]);
 
 		// insertion to the data base
 		if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
 			
-			$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`,`book_image`, `genre_ID`, `librarian_ID`) 
-						VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$location','$bookgenre','$id')";
+			$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`,`book_image`,`book_pdf`, `genre_ID`, `librarian_ID`) 
+						VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$location','$upload_pdf','$bookgenre','$id')";
 			$result = mysqli_query($con, $sql);
 			if($result==1){
 				$_SESSION['message']="Book inserted successfully";
@@ -123,7 +123,7 @@ if(isset($_POST['add_book'])){
                       </div>
 					  <div class="form-group">
                         <label for="exampleInputPassword1">Book pdf</label>
-                        <input type="file" name="pdf">
+                        <input type="file" name="pdf_file" accept="application/pdf">
                       </div>
                       <div class="form-group">
                         <input type="text" name="book_year" class="form-control" placeholder="Book year...">
@@ -204,7 +204,7 @@ if(isset($_POST['add_book'])){
 								<th>Book Title</th>
 								<th>Author</th>
 								<th>Year</th>
-								<th>Summary</th>
+								<!-- <th>Summary</th> -->
 								<th>Date</th>
 							</tr>
 						</thead>
@@ -222,7 +222,7 @@ if(isset($_POST['add_book'])){
 								</td>
 								<td><?php echo $res['book_author'];?></td>
 								<td><?php echo $res['book_year'];?></td>
-								<td><?php echo $res['book_summary'];?></td>
+								<!-- <td></td> -->
 								<td>01-10-2021</td>
 								<td>
 									<a href="function.php?edit_book=<?php echo $res['book_ID'];?>" type="button"  class="btn btn-success">Edit</a>
@@ -235,36 +235,7 @@ if(isset($_POST['add_book'])){
 								?>
 						</tbody>
 					</table>
-				<!-- </div>
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul>
-				</div> -->
+				
 			</div>
 		</main>
 		<!-- MAIN -->

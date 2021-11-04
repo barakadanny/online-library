@@ -3,6 +3,8 @@
 <?php 
     include("includes/constants.php");
     include("includes/functions.php");
+// connection to the database
+    require_once "includes/config.php";
 ?>
 <?php 
     include("includes/header.php");
@@ -10,6 +12,10 @@
     
 <?php
     include("includes/navigation.php");
+?>
+<?php
+// code to display books list on the page
+
 ?>
 
      <!-- Single category search section -->
@@ -39,34 +45,20 @@
                           <th style="width:60%;">Name</th>
                           <th style="width:40%;">Author</th>
                         </tr>
+                        <?php
+                          $id = (int)$_GET['genre_ID'];
+                          $q= "SELECT * FROM book WHERE genre_ID='$id' ";
+                          $result= mysqli_query($con, $q);
+                          while($res=mysqli_fetch_array($result)){
+                        ?>
                         <tr>
-                          <td><a href="#" class="view-book__link">A Commentary and Digest on The Air, Act 1981</a></td>
-                          <td>Apoorva Kumar Singh</td>
+                          <td><a href="single-book.php?book_ID=<?php echo $res['book_ID']; ?>" class="view-book__link"><?php echo $res['book_title'];?></a></td>
+                          <td><?php echo $res['book_author'];?></td>
                         </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">The Bloomsbury Anthology of Great Indian Poems</a></td>
-                          <td>Abhay K.</td>
-                        </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">Karmayoddha Granth</a></td>
-                          <td>Amit Shah</td>
-                        </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">A Rural Manifesto – Realising India’s Future through her Village</a></td>
-                          <td>BJP MP Varun Gandhi</td>
-                        </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">The Fire Burns Blue: A History of Womens Cricket in India</a></td>
-                          <td>Karunya Keshav and Sidhanta Pathak</td>
-                        </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">Strangers No More: New Narratives from Northeast</a></td>
-                          <td>Sanjoy Hazarika</td>
-                        </tr>
-                        <tr>
-                          <td><a href="#" class="view-book__link">Strangers No More: New Narratives from Northeast</a></td>
-                          <td>Sanjoy Hazarika</td>
-                        </tr>
+                        <?php
+                          }
+                          ?>
+
                       </table>
                       <section class="pagination-section">
                           <div>
