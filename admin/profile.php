@@ -1,11 +1,11 @@
 
 
-<?php include("header.php");?>
+<?php include("includes/header.php");?>
 
   <div class="main-wrapper">
   
 
-	   <?php include("topbar.php");?>
+	   <?php include("includes/topbar.php");?>
 
 	 
 	  

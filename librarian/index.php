@@ -1,8 +1,8 @@
-
 <?php
 require_once "includes/config.php";
 include('function.php'); ?>
 <?php
+
 
     if(!empty($_GET['id'])){
         //fetch data about the user using his identification 
@@ -65,6 +65,24 @@ if(isset($_POST['add_book'])){
 		$_SESSION['msg_type']="danger";
 	}
 }
+
+// function to update a book
+// if(isset($_GET['edit_book'])){
+//     $id= $_GET['edit_book'];
+//     $sql = "SELECT * FROM book WHERE book_ID='$id' ";
+//     $result= mysqli_query($con, $sql);
+//     // $res = count($result);
+//     if($row = mysqli_fetch_array($result)){
+        
+//         $bookTitle = $row['book_title'];
+//         $bookAuthor= $row['book_author'];
+//         $bookYear= $row['book_year'];
+//         $bookSummary = $row['book_summary'];
+//         $bookImage = $row['book_image'];
+//         $bookPdf = $row['book_pdf'];
+//         header("location: index.php");
+//     }
+// }
 ?>
 
 <?php include('header.php'); ?>
@@ -126,10 +144,10 @@ if(isset($_POST['add_book'])){
                         <input type="file" name="pdf_file" accept="application/pdf">
                       </div>
                       <div class="form-group">
-                        <input type="text" name="book_year" class="form-control" placeholder="Book year...">
+                        <input type="text" name="book_year"  class="form-control" placeholder="Book year...">
                       </div>
                       <div class="form-group">
-                        <input type="text" name="book_author" class="form-control" placeholder="Author here...">
+                        <input type="text" name="book_author"  class="form-control" placeholder="Author here...">
                       </div>
                       <div class="col-auto my-1">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
@@ -225,8 +243,8 @@ if(isset($_POST['add_book'])){
 								<!-- <td></td> -->
 								<td>01-10-2021</td>
 								<td>
-									<a href="function.php?edit_book=<?php echo $res['book_ID'];?>" type="button"  class="btn btn-success">Edit</a>
-									<a href="function.php?delete_book=<?php echo $res['book_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
+									<a href="edit.php?edit_book=<?php echo $res['book_ID'];?>" type="button"  class="btn btn-success">Edit</a>
+									<a href="index.php?delete_book=<?php echo $res['book_ID']; ?>" type="button" class="btn btn-danger">Delete</a>
 								</td>
 								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>

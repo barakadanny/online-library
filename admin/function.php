@@ -90,11 +90,6 @@ if(isset($_GET['edit'])){
 // add genre of books
 if(isset($_POST['genre_add'])){
     $genre = $_POST['genre_name'];
-        // $img =$_FILES["image"]["tmp_name"]
-    	// $fileinfo=PATHINFO($_FILES["image"]["name"]);
-		// $newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
-		// move_uploaded_file($_FILES["image"]["tmp_name"],"upload/" . $newFilename);
-		// $location="upload/" . $newFilename;
 
    	if(!empty($_FILES["image"]["tmp_name"])){
 		$fileinfo=PATHINFO($_FILES["image"]["name"]);
@@ -176,6 +171,69 @@ if(isset($_GET['delete_genre'])){
 
     // header("Location: genre.php");
 
+}
+
+// function to add language
+if(isset($_POST['language_add'])){
+    $language = $_POST['language_name'];
+
+   	if(!empty($_FILES["image"]["tmp_name"])){
+		$fileinfo=PATHINFO($_FILES["image"]["name"]);
+		$newFilename=$fileinfo['filename'] ."_". time() . "." . $fileinfo['extension'];
+		move_uploaded_file($_FILES["image"]["tmp_name"],"language_img/" . $newFilename);
+		$location="language_img/" . $newFilename;
+
+		// insertion to the data base
+		if(!empty($language)){
+			
+			$sql = "INSERT INTO `language` (`language_name`, `language_image`) 
+						VALUES ('$language','$location')";
+			$result = mysqli_query($con, $sql);
+        //    var_dump($result);
+        //    echo("Error description: " . $con -> error);
+			if($result==1){
+                header("Location:language.php");
+				$_SESSION['message']="Language Added successfully";
+				$_SESSION['msg_type']="success";
+			}else{
+                header("Location:language.php");
+				$_SESSION['message']="⚠ failed to insert Language";
+				$_SESSION['msg_type']="danger";
+			}
+	
+			// $id = (int)$_GET['id'];
+			// echo $id;
+		}else{
+            header("Location:language.php");
+			$_SESSION['message']="⚠ All field are required!";
+			$_SESSION['msg_type']="danger";
+		}
+	}else{
+        header("Location:language.php");
+		$_SESSION['message']="No image has been selected";
+		$_SESSION['msg_type']="danger";
+	} 
+
+
+    
+
+    // if(empty($_POST['language_name'])){
+    //     header("location: language.php");
+    //     $_SESSION['message']="⚠ All field are required!";
+    //     $_SESSION['msg_type']="danger";
+    // }else{
+    //     $languagename = $_POST['language_name'];
+
+    //     $sql = "INSERT INTO language values ('', '$languagename')";
+    //     $query = mysqli_query($con, $sql);
+    //     if($query==1){
+    //         $_SESSION['message']="Record has been saved successfully !";
+    //         $_SESSION['msg_type']="success";
+    //         header("location: genre.php");
+    //     }else{
+    //         echo "Failed to insert Data";
+    //     }
+    // }
 }
 
  ?>

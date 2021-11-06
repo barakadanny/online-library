@@ -70,5 +70,21 @@ if(isset($_GET['delete_book'])){
     // header("Location: genre.php");
 
 }
-
+// function to update a book
+// if(isset($_GET['edit_book'])){
+//     $id= $_GET['edit_book'];
+//     $sql = "SELECT * FROM book WHERE book_ID='$id' ";
+//     $result= mysqli_query($con, $sql);
+//     // $res = count($result);
+//     if($row = mysqli_fetch_array($result)){
+        
+//         $bookTitle = $row['book_title'];
+//         $bookAuthor= $row['book_author'];
+//         $bookYear= $row['book_year'];
+//         $bookSummary = $row['book_summary'];
+//         $bookImage = $row['book_image'];
+//         $bookPdf = $row['book_pdf'];
+//         header("location: index.php");
+//     }
+// }
 ?>

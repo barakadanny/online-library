@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">   
     <link rel="stylesheet" href="assets/css/single-b.css">
     <link rel="stylesheet" href="assets/css/single-category.css">
-    <link rel="stylesheet" href="assets/css/books-explore.css">  
+    <link rel="stylesheet" href="assets/css/books-explo.css">  
 </head>
 <body>
     

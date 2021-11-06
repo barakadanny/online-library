@@ -39,7 +39,7 @@
                         <div class="book-action">
                             <h4 class="book-price">$0.00</h4>
                             <?php if(is_logged_in() ): ?>
-                                <a href="#" class="btn btn-white">Download</a>
+                                <a href="librarian/book_pdf/<?php echo $res['book_pdf'];?>" class="btn btn-white" target="_blank">Download</a>
                             <?php else: ?>
                                 <a href="login.php" class="btn btn-white">Please login to download</a>
                             <?php endif; ?>
