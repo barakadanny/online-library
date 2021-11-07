@@ -23,12 +23,12 @@
         <div class="container">
             <div class="row section-title justify-content-center">
                 <?php
-                    $id = (int)$_GET['genre_ID'];
-                    $q= "SELECT genre_name FROM genre WHERE genre_ID='$id' ";
+                    $id = (int)$_GET['language_ID'];
+                    $q= "SELECT language_name FROM language WHERE language_ID='$id' ";
                     $result= mysqli_query($con, $q);
                     while($res=mysqli_fetch_array($result)){
                 ?>
-                <h2 class="section-title-heading"><?php echo $res['genre_name'];?></h2>
+                <h2 class="section-title-heading"><?php echo $res['language_name'];?></h2>
                 <?php
                     }
                 ?>
@@ -55,8 +55,8 @@
                           <th style="width:40%;">Author</th>
                         </tr>
                         <?php
-                          $id = (int)$_GET['genre_ID'];
-                          $q= "SELECT * FROM book WHERE genre_ID='$id' ";
+                          $id = (int)$_GET['language_ID'];
+                          $q= "SELECT * FROM book WHERE language_ID='$id' ";
                           $result= mysqli_query($con, $q);
                           while($res=mysqli_fetch_array($result)){
                         ?>

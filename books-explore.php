@@ -36,12 +36,20 @@
             </div>
 
             <div class="row justify-content-center text-center mt-2">
+                <?php
+                    $q="SELECT * FROM language";
+                    $result = mysqli_query($con, $q);
+                    while($res = mysqli_fetch_array($result)){
+                ?>
 
                 <div class="col-md-3 single-desc">
-                    <h2 class="genre-title">French</h2>
-                    <a href="single-category.php"><img class="best-books_links" src="assets/img/English.jpg" alt=""></a>
+                    <h2 class="genre-title"><?php echo $res['language_name'];?></h2>
+                    <a href="language.php?language_ID=<?php echo $res['language_ID']; ?>"><img class="best-books_links" src="admin/<?php echo $res['language_image'];?>" alt=""></a>
                 </div>
-                <div class="col-md-3 single-desc">
+                <?php
+                }
+                ?>
+                <!-- <div class="col-md-3 single-desc">
                     <h2 class="genre-title">English</h2>
                     <a href="single-category.php"><img class="best-books_links" src="assets/img/French.jpg" alt=""></a>
                 </div>
@@ -52,7 +60,7 @@
                 <div class="col-md-3 single-desc">
                     <h2 class="genre-title">Spanish</h2>
                     <a href="single-category.php"><img class="best-books_links" src="assets/img/Swahili.jpg" alt=""></a>
-                </div>
+                </div> -->
 
             </div>
 

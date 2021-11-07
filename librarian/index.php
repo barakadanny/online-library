@@ -24,6 +24,7 @@ if(isset($_POST['add_book'])){
     $bookauthor = $_POST['book_author'];
     $booksummary = $_POST['book_summary'];
     $bookgenre = $_POST['book_genre'];
+    $booklanguage = $_POST['book_language'];
 
 	$id = (int)$_GET['id'];
 
@@ -43,8 +44,8 @@ if(isset($_POST['add_book'])){
 		// insertion to the data base
 		if(!empty($booktitle) && !empty($bookauthor) && !empty($bookyear) && !empty($booksummary) && !empty($bookgenre) ){
 			
-			$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`,`book_image`,`book_pdf`, `genre_ID`, `librarian_ID`) 
-						VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary','$location','$upload_pdf','$bookgenre','$id')";
+			$sql = "INSERT INTO `book`(`book_title`, `book_author`, `book_year`, `book_summary`, `language_ID`,`book_image`,`book_pdf`, `genre_ID`, `librarian_ID`) 
+						VALUES ('$booktitle','$bookauthor','$bookyear','$booksummary', '$booklanguage','$location','$upload_pdf','$bookgenre','$id')";
 			$result = mysqli_query($con, $sql);
 			if($result==1){
 				$_SESSION['message']="Book inserted successfully";
@@ -52,6 +53,7 @@ if(isset($_POST['add_book'])){
 			}else{
 				$_SESSION['message']="⚠ failed to insert book";
 				$_SESSION['msg_type']="danger";
+				echo "Failed to connect to MySQL: " . $con -> connect_error;
 			}
 	
 			// $id = (int)$_GET['id'];
@@ -150,26 +152,48 @@ if(isset($_POST['add_book'])){
                         <input type="text" name="book_author"  class="form-control" placeholder="Author here...">
                       </div>
                       <div class="col-auto my-1">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
-                        <select class=" mr-sm-2" name="book_genre" id="inlineFormCustomSelect">
-                          <option selected>Please select genre...</option>
-                          <?php
-                            
-                            $selectquery="SELECT * FROM genre";
-                            $query = mysqli_query($con, $selectquery);
-                            $nums = mysqli_num_rows($query);
-                            
-                            while($res = mysqli_fetch_array($query) ){
-                              
-                            ?>
-                            <option value="<?php echo $res['genre_ID'] ?>"><?php echo $res['genre_name']; ?></option>
-                              <?php
-                                }             
-                          ?>
-                          <!-- <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option> -->
-                        </select>
+							<label class="mr-sm-2" for="inlineFormCustomSelect">Book Genre</label>
+							<select class=" mr-sm-2" name="book_genre" id="inlineFormCustomSelect">
+							<option selected>Please select genre...</option>
+							<?php
+								
+								$selectquery="SELECT * FROM genre";
+								$query = mysqli_query($con, $selectquery);
+								$nums = mysqli_num_rows($query);
+								
+								while($res = mysqli_fetch_array($query) ){
+								
+								?>
+								<option value="<?php echo $res['genre_ID'] ?>"><?php echo $res['genre_name']; ?></option>
+								<?php
+									}             
+							?>
+							<!-- <option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option> -->
+							</select>
+                      </div>
+					  <div class="col-auto my-1">
+							<label class="mr-sm-2" for="inlineFormCustomSelect">Book Language</label>
+							<select class=" mr-sm-2" name="book_language" id="inlineFormCustomSelect">
+							<option selected>Please select Language...</option>
+							<?php
+								
+								$selectquery="SELECT * FROM language";
+								$query = mysqli_query($con, $selectquery);
+								$nums = mysqli_num_rows($query);
+								
+								while($res = mysqli_fetch_array($query) ){
+								
+								?>
+								<option value="<?php echo $res['language_ID'] ?>"><?php echo $res['language_name']; ?></option>
+								<?php
+									}             
+							?>
+							<!-- <option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option> -->
+							</select>
                       </div>
                       <!-- <div class="form-group">
                         <label for="exampleFormControlTextarea1">Book Summary</label>
