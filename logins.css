@@ -1,5 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+:root {
+  /* --main-accent-color: #03bad5;
+  --section-title-color-dark: #37474f;
+  --body-color: #495057; */
 
+  --primary-color: #f2ebe3;
+  --secondary-color: rgb(152, 108, 65, 0.6);
+  --first--text-color: rgb(152, 108, 65);
+  --btn-color: rgb(152, 108, 65, 0.5);
+  --dark-color: #0d1713;
+  --rgb-dark-color: rgb(13, 23, 19, 0.7);
+  --white-color: #ffffff;
+  --over-color: #27778b;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -30,7 +48,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4caf50;
+  background: #ffffff;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -43,7 +61,7 @@
 .form button:hover,
 .form button:active,
 .form button:focus {
-  background: #43a047;
+  background: #ffffff;
 }
 .form .message {
   margin: 15px 0 0;
@@ -91,13 +109,30 @@
 .container .info span .fa {
   color: #ef3b3a;
 }
+.signUp-btn {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 5px 30px;
+  color: var(--primary-color);
+  outline: none !important;
+}
+.signUp-btn:focus {
+  outline: none !important;
+}
+.signUp-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.contain {
+  width: 60%;
+  padding: 0 5rem;
+}
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8dc26f);
-  background: -moz-linear-gradient(right, #76b852, #8dc26f);
-  background: -o-linear-gradient(right, #76b852, #8dc26f);
-  background: linear-gradient(to left, #76b852, #8dc26f);
+  background: var(--primary-color);
   font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding-top: 5rem;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
