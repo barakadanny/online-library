@@ -32,7 +32,7 @@
         <div class="container">
 
             <div class="row section-title ">
-                <h2 class="section-title-heading">Best Books</h2>
+                <h2 class="section-title-heading">Languages</h2>
             </div>
 
             <div class="row justify-content-center text-center mt-2">

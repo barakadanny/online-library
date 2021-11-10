@@ -106,8 +106,9 @@ require('includes/functions.php');
     <link rel="stylesheet" href="logins.css"> 
 </head>
 <body>
-    <?php include('partials/_flash.php'); ?>
+    
                 <div class="contain pt-2">
+                    <?php include('partials/_flash.php'); ?>
                     <?php
                                 if(isset($errors) !=0){
                                   echo '<div class="alert alert-danger">
