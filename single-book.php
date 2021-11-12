@@ -1,12 +1,12 @@
 <?php $title="Download book"; ?>
+<?php session_start(); ?>
 <?php 
+    //include("filters/auth_filter.php");
+    require('includes/config.php');
     include("includes/constants.php");
-    include("includes/functions.php");
-    // connection to the database
-    require_once "includes/config.php";
+    require('includes/functions.php');
 ?>
 
-<?php session_start(); ?>
 <?php 
     include("includes/header.php");
 ?>
@@ -24,6 +24,8 @@
             <div class="row mt-5 mb-5 pt-5 pb-5 app-download">
                 <?php
                 $id= (int)$_GET['book_ID'];
+                //$user_ID= $_SESSION['user_ID'];
+                //echo $_SESSION['user_ID'];
                 $q= "SELECT * FROM book WHERE book_ID='$id' ";
                 $result= mysqli_query($con, $q);
                 while($res=mysqli_fetch_array($result)){
@@ -44,13 +46,25 @@
                                 <a href="login.php" class="btn btn-white">Please login to download</a>
                             <?php endif; ?>
                             <ul class="rating">
-                                <li class="rating-item" data-rate="1"></li>
-                                <li class="rating-item active" data-rate="2"></li>
-                                <li class="rating-item" data-rate="3"></li>
-                                <li class="rating-item" data-rate="4"></li>
-                                <li class="rating-item" data-rate="5"></li>
+                                <li onclick="window.location.href='includes/star.php?clicked=1&book_id=<?php echo $res['book_ID'];?>&user_ID=<?php echo $_SESSION['user_ID']; ?>'" class="rating-item" data-rate="1"></li>
+                                <li onclick="window.location.href='includes/star.php?clicked=2&book_id=<?php echo $res['book_ID'];?>&user_ID=<?php echo $_SESSION['user_ID']; ?>'" class="rating-item active" data-rate="2"></li>
+                                <li onclick="window.location.href='includes/star.php?clicked=3&book_id=<?php echo $res['book_ID'];?>&user_ID=<?php echo $_SESSION['user_ID']; ?>'" class="rating-item" data-rate="3"></li>
+                                <li onclick="window.location.href='includes/star.php?clicked=4&book_id=<?php echo $res['book_ID'];?>&user_ID=<?php echo $_SESSION['user_ID']; ?>'" class="rating-item" data-rate="4"></li>
+                                <li onclick="window.location.href='includes/star.php?clicked=5&book_id=<?php echo $res['book_ID'];?>&user_ID=<?php echo $_SESSION['user_ID']; ?>'" class="rating-item" data-rate="5"></li>
                             </ul>
                         </div>
+                        <!-- message to the user about the rating -->
+                         <?php 
+                                if(isset($_SESSION['message'])):
+                            ?>
+                            <div class="alert alert-<?=$_SESSION['msg_type'] ?>">
+                                <?php 
+                                    echo $_SESSION['message'];
+                                    unset($_SESSION['message']);
+                                ?>
+                            </div>
+                        <?php endif ?>
+                  <!-- summary about the book -->
                         <p><?php echo $res['book_summary'];?></p>
                     </div>
                 </div>
