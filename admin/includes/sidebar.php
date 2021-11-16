@@ -28,13 +28,13 @@
 			   
 			     <li class="dropdown">
                     <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					<i class="far fa-table"></i><span>Manage Books</span></a>
+					<i class="fas fa-table"></i><span>Manage Books</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                         <li>
                             <a href="genre.php">Genre</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="language.php">Language</a>
                         </li>
                         <li>
                             <a href="#">Page 3</a>
@@ -42,15 +42,8 @@
                     </ul>
                 </li>
                
-               <li class="">
-                    <a href="#"><i class="fas fa-globe-asia"></i><span>Manage range</span></a>
-                </li>
-				
-				 <li  class="">
-                    <a href="#"><i class="far fa-bookmark"></i><span>Profile</span></a>
-                </li>
                 <li  class="">
-                    <a href="#"><i class="fas fa-question-circle"></i><span>Full report</span></a>
+                    <a href="report.php"><i class="fas fa-question-circle"></i><span>Full report</span></a>
                 </li>
                
                

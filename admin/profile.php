@@ -144,8 +144,8 @@
         <!-- footer -->
         <!-- ============================================================== -->
        <footer class="footer">
-          © 2021 Admin Dashboard by
-          <a href="https://www.youtube.com/c/VishwebDesign">Vishweb Design</a>
+          © 2021
+          <a href="#">digibook</a>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -154,5 +154,5 @@
 	
   </div>
   
-  <?php include("footer.php");?>
+  <?php include("includes/footer.php");?>
   

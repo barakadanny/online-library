@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">   
-    <link rel="stylesheet" href="assets/css/single-b.css">
+    <link rel="stylesheet" href="assets/css/single-book.css">
     <link rel="stylesheet" href="assets/css/single-category.css">
     <link rel="stylesheet" href="assets/css/books-explo.css">  
 </head>

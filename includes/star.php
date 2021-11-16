@@ -29,13 +29,14 @@ if(isset($_GET["clicked"])){
         // send a message to the user about the action that has been done
         $_SESSION['message']="Thank you for your feedback!";
         $_SESSION['msg_type']="success";
-        
+
         header("Location: ../single-book.php?book_ID=".$book);
         
     }
 
 }else{
-    echo " an error occured";
+    $_SESSION['message']="An Error Ocurred!";
+    $_SESSION['msg_type']="danger";
 }
 
 

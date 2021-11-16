@@ -5,6 +5,16 @@
     require('includes/config.php');
     include("includes/constants.php");
     require('includes/functions.php');
+
+    // action to calculate the rating average
+    $id= (int)$_GET['book_ID'];
+    if(isset($id)){
+        $sql = "SELECT rating_star FROM raiting WHERE book_ID='$id' ";
+        $query = mysqli_query($con, $sql);
+        $count = mysqli_fetch_array($query);
+        
+    }
+
 ?>
 
 <?php 
@@ -23,7 +33,7 @@
         <div class="container">
             <div class="row mt-5 mb-5 pt-5 pb-5 app-download">
                 <?php
-                $id= (int)$_GET['book_ID'];
+                
                 //$user_ID= $_SESSION['user_ID'];
                 //echo $_SESSION['user_ID'];
                 $q= "SELECT * FROM book WHERE book_ID='$id' ";
@@ -39,7 +49,24 @@
                         <h3 class="book-title"><?php echo $res['book_title'];?></h3>
                         <span class="book-author"><?php echo $res['book_author'];?>; <?php echo $res['book_year'];?></span>
                         <div class="book-action">
-                            <h4 class="book-price">$0.00</h4>
+                            <!-- rating feature and average calculation -->
+                        <!-- the code to display rating feedback start from the begining of this page I use
+                        this large code here so that if there is no any rating for the book in the 
+                        database we can get a zero. yet this code has to be changed -->
+                            <h4 class="book-rating">rating: 
+                                <?php 
+                                if($count==true){
+                                    $users = "SELECT user_ID FROM raiting WHERE book_ID='$id' ";
+                                    $q = mysqli_query($con, $users);
+                                    // print_r((array_sum($count)/2)/$result);
+                                     print_r(array_sum($count)/2);
+                                }else{
+                                    echo "0";
+                                }
+                                
+                                ?>
+                                /5</h4>
+
                             <?php if(is_logged_in() ): ?>
                                 <a href="librarian/book_pdf/<?php echo $res['book_pdf'];?>" class="btn btn-white" target="_blank">Download</a>
                             <?php else: ?>

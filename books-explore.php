@@ -49,18 +49,6 @@
                 <?php
                 }
                 ?>
-                <!-- <div class="col-md-3 single-desc">
-                    <h2 class="genre-title">English</h2>
-                    <a href="single-category.php"><img class="best-books_links" src="assets/img/French.jpg" alt=""></a>
-                </div>
-                <div class="col-md-3 single-desc">
-                    <h2 class="genre-title">Swahili</h2>
-                    <a href="single-category.php"><img class="best-books_links" src="assets/img/Russian.jpg" alt=""></a>
-                </div>
-                <div class="col-md-3 single-desc">
-                    <h2 class="genre-title">Spanish</h2>
-                    <a href="single-category.php"><img class="best-books_links" src="assets/img/Swahili.jpg" alt=""></a>
-                </div> -->
 
             </div>
 
@@ -92,12 +80,6 @@
             <?php
                 }
                 ?>
-                <!-- <div class="col-md-4 single-desc">
-                    <a href="single-category.php"><img class="genre-link" src="assets/img/comic.jpg" alt=""></a>
-                </div>
-                <div class="col-md-4 single-desc">
-                    <a href="single-category.php"><img class="genre-link" src="assets/img/science.png" alt=""></a>
-                </div> -->
 
             </div>
 
@@ -117,9 +99,11 @@
             <div class="row justify-content-center text-center mt-2 mb-5">
 
                 <div class="col-md-6 single-desc">
+                    <h2 class="genre-title">From Languages</h2>
                     <a href="single-category.php"><img class="popular-link" src="assets/img/popular1.jpg" alt=""></a>
                 </div>
                 <div class="col-md-6 single-desc">
+                    <h2 class="genre-title">From Genre</h2>
                     <a href="single-category.php"><img class="popular-link" src="assets/img/popular2.jpg" alt=""></a>
                 </div>
             </div>
