@@ -8,9 +8,7 @@
 	   <?php include("includes/topbar.php");?>
      
     <?php
-        $name='';
-        $email='';
-?>
+    ?>
 	 
 	 <!--==============================================
      sidebar
@@ -76,22 +74,19 @@
                   <form action="function.php" method="POST">
                     <div class="form-group row col-md-8 d-flex justify-content-between">
                       <div class="col-xs-4">
-                        <label for="ex1">Librarian Name</label>
-                        <!-- value="<?php echo $name; ?>" -->
-                        <input class="form-control" name="lib_name" id="ex1" type="text" value="<?php echo $name; ?>"  placeholder="Enter name...">
+                        <label for="ex1">Number of users</label>
+                        <label for="ex1">12</label>
                       </div>
                       <div class="col-xs-4">
-                        <label for="ex2">Email</label>
-                        <!-- value="<?php echo $email; ?>" -->
-                        <input class="form-control" name="lib_email" id="ex2" type="text" value="<?php echo $email; ?>"  placeholder="Enter email...">
+                        <label for="ex2">Number of Books</label>
+                        <label for="ex1">12</label>
                       </div>
                       <div class="col-xs-4">
-                        <label for="ex3">Password</label>
-                        <input class="form-control" name="lib_password" id="ex3" type="text" placeholder="Enter password...">
+                        <label for="ex3">Number of Librarian</label>
+                        <label for="ex1">12</label>
                       </div>
                       
                     </div>
-                    <button type="submit" name="lib_add" class="btn btn-primary">submit</button>
                   </form>
 
                   <div class="table-responsive">

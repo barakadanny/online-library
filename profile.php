@@ -61,12 +61,12 @@ $user_id = (int)$_GET['id'];
                 <h3 class="panel-title">Welcome <?= $user->user_name ?></h3>
             </div>
             <form class="panel-body" action="user-report.php" method="post">
-                <div class="user-content">
+                <!-- <div class="user-content">
                     <a href="download.php">Downloaded Books</a>
                 </div>
                 <div class="user-content">
                     <a href="rated.php">Rated Books</a>
-                </div>
+                </div> -->
                 <br>
                 <a href="user-report.php?user_ID=<?php echo $user_id; ?>" class="btn btn-success">View Your Activities</a>
             </form>
