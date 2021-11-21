@@ -3,7 +3,7 @@ session_start();
 
 
 // Include the configuration file
-require_once "config.php";
+  
 
 //  Login section
     // define variable 

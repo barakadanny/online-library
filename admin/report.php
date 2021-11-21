@@ -1,4 +1,22 @@
+    <?php
+    require_once "config.php";
 
+    // queries
+    // to count users
+    $sql = "SELECT * FROM user";
+    $result = mysqli_query($con, $sql);
+    $rowcount = mysqli_num_rows( $result );
+
+    // to count books
+    $book_sql ="SELECT * FROM book";
+    $book_result= mysqli_query($con, $book_sql);
+    $book_rowcount= mysqli_num_rows($book_result);
+
+    // query to count librarians
+    $librarian_sql="SELECT * FROM librarian";
+    $librarian_result= mysqli_query($con, $librarian_sql);
+    $librarian_rowcount= mysqli_num_rows($librarian_result);
+    ?>
 
 <?php include("includes/header.php");?>
 
@@ -7,8 +25,6 @@
 
 	   <?php include("includes/topbar.php");?>
      
-    <?php
-    ?>
 	 
 	 <!--==============================================
      sidebar
@@ -74,16 +90,16 @@
                   <form action="function.php" method="POST">
                     <div class="form-group row col-md-8 d-flex justify-content-between">
                       <div class="col-xs-4">
-                        <label for="ex1">Number of users</label>
-                        <label for="ex1">12</label>
+                        <label for="ex1">Number of users</label> <br>
+                        <label for="ex1"> <?php printf($rowcount); ?> </label>
                       </div>
                       <div class="col-xs-4">
-                        <label for="ex2">Number of Books</label>
-                        <label for="ex1">12</label>
+                        <label for="ex2">Number of Books</label> <br>
+                        <label for="ex1"> <?php printf($book_rowcount); ?></label>
                       </div>
                       <div class="col-xs-4">
-                        <label for="ex3">Number of Librarian</label>
-                        <label for="ex1">12</label>
+                        <label for="ex3">Number of Librarian</label><br>
+                        <label for="ex1"> <?php printf($librarian_rowcount); ?></label>
                       </div>
                       
                     </div>
