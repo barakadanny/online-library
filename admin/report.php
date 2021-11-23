@@ -104,9 +104,9 @@
                       
                     </div>
                   </form>
-
-                  <div class="table-responsive">
                       
+                  <div class="table-responsive">
+                      <a href="generate_report.php" class="btn btn-success">Generate Report</a>
                   </div>
                   
 

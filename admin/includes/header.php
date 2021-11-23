@@ -25,6 +25,6 @@
 
 		<link href="css/custom.css" type="text/css" rel="stylesheet"/>
 		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-        <title>Librarian -DigiBook</title>
+        <title>Admin -DigiBook</title>
 </head>
 <body>
