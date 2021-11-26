@@ -17,7 +17,7 @@ header("Location: login.php");//redirect to the login page to secure the welcome
 
 			  <span class="">
               <!--End Logo icon -->
-                  <h4 class="mb-0"><b>DigiBook</b> design</h4>
+                  <h4 class="mb-0"><b>DigiBook</b> Admin</h4>
 				</span>
             </a>
           </div>
@@ -41,13 +41,13 @@ header("Location: login.php");//redirect to the login page to secure the welcome
 				 <div class="xp-searchbar ml-3 ">
 						     <form>
 							    <div class="input-group">
-								  <input type="search" class="form-control"
+								  <!-- <input type="search" class="form-control"
 								  placeholder="Search">
 								  <div class="input-group-append">
 								     <button class="btn" type="submit" id="button-addon2">
 									 <i class="fas fa-search"></i>
 									 </button>
-								  </div>
+								  </div> -->
 								</div>
 							 </form>
 						 </div>
@@ -66,7 +66,7 @@ header("Location: login.php");//redirect to the login page to secure the welcome
                 <a class="nav-link   
 				dropdown-toggle profile-pic" href="#" id="navbarDropdown" 
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<img src="img/user.jpg" alt="user" class="">
+				<!-- <img src="img/user.jpg" alt="user" class=""> -->
                   <span class="hidden-md-down d-none">
                      
                     <?php 

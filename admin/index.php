@@ -1,7 +1,12 @@
 
 
-<?php include("includes/header.php");  
+<?php include("includes/header.php"); 
+      include("config.php");
  
+      $q= "SELECT * FROM user";
+      $result = mysqli_query($con, $q);
+
+      $usersCount = mysqli_num_rows($result);
 ?>
 
   <div class="main-wrapper">
@@ -76,29 +81,28 @@
                         <tr>
                           <th colspan="2">Profile name</th>
                           <th>Email</th>
-                          <th>News Subscription Status</th>
+                          <th>User Status</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      
+                      while($res = mysqli_fetch_array($result)){
+                      
+                      ?>
                         <tr>
                           <td style="width: 50px">
-                            <span class="round">S</span>
+                            <span class="round"><?php echo substr($res['user_name'], -1); ?></span>
                           </td>
                           <td>
-                            <h6>Sunil Joshi</h6>
+                            <h6><?php echo $res['user_name']; ?></h6>
                           </td>
-                          <td>barakadan421@gmail.com</td>
-                          <td>true</td>
+                          <td><?php echo $res['user_email'] ?></td>
+                          <td><?php echo $res['active'] ?></td>
                         </tr>
-                        <tr>
-                          <td><span class="round round-success">B</span></td>
-                          <td>
-                            <h6>Bhavesh patel</h6>
-                          </td>
-                          <td>test@gmail.com</td>
-                          <td>False</td>
-                        </tr>
-                        
+                      <?php
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div>
@@ -109,9 +113,9 @@
             <!-- Column -->
             <div class="col-lg-4 d-flex align-items-stretch">
               <div class="card w-100">
-                <div class="up-img" style="background-image: url(./img/users.png)"></div>
+                <div class="up-img" style="font-size:15rem; display:flex; justify-content: center;"><?php echo $usersCount; ?></div>
                 <div class="card-body">
-                  <h5 class="card-title">Manage users from this page</h5>
+                  <h5 class="card-title">Users on our platform</h5>
                   <span class="label label-info label-rounded">Technology</span>
                   <p class="mb-0 mt-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
